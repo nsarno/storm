@@ -20,26 +20,23 @@ defmodule Winter.User do
     Find a user by email or raise an exception
 
     Returns a `Winter.User` struct corresponding to the `email` parameter
-    or nil.
+    or raises Ecto.NoResultsError.
   """
-  def find_by_email email do
+  def find_by_email! email do
     query = from u in User, where: ^email == u.email, select: u
-    Repo.one(query)
+    Repo.one! query
   end
 
   @doc """
     Assert email/password combination
 
     Returns a `Winter.User` struct corresponding to the `email`/`password`
-    parameters or nil.
+    parameters or raises Ecto.NoResultsError.
   """
-  def authenticate email, pwd do
-    user = find_by_email(email)
-    pwd_digest = digest_password(pwd)
-    case user do
-      %Winter.User{password_digest: digest} when digest == pwd_digest -> user
-      _ -> nil
-    end
+  def authenticate! email, pwd do
+    user = find_by_email! email
+    if user.password_digest != digest_password(pwd), do: raise NoResultsError
+    user
   end
 
   @doc """
@@ -63,7 +60,7 @@ defmodule Winter.User do
     end
   end
 
-  defp digest_password pwd do
+  def digest_password pwd do
     import Plug.Crypto.KeyGenerator, only: [generate: 2]
     to_hex generate(pwd, Winter.Endpoint.config :secret_key_base)
   end
