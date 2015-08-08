@@ -10,7 +10,7 @@ config :winter, Winter.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "eNQk0Vm4AcF2IIW7AL5DVdmlyANo7/xYBVpvc5QcJA+bWxtprAklOYVaVOIaKC0W",
-  render_errors: [default_format: "html"],
+  render_errors: [default_format: "json"],
   pubsub: [name: Winter.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
