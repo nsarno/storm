@@ -1,5 +1,8 @@
 defmodule Winter.User do
   use Winter.Web, :model
+  import Ecto.Query
+  alias Winter.User
+  alias Winter.Repo
 
   schema "users" do
     field :name, :string
@@ -14,6 +17,32 @@ defmodule Winter.User do
   @optional_fields ~w()
 
   @doc """
+    Find a user by email or raise an exception
+
+    Returns a `Winter.User` struct corresponding to the `email` parameter
+    or nil.
+  """
+  def find_by_email email do
+    query = from u in User, where: ^email == u.email, select: u
+    Repo.one(query)
+  end
+
+  @doc """
+    Assert email/password combination
+
+    Returns a `Winter.User` struct corresponding to the `email`/`password`
+    parameters or nil.
+  """
+  def authenticate email, pwd do
+    user = find_by_email(email)
+    pwd_digest = digest_password(pwd)
+    case user do
+      %Winter.User{password_digest: digest} when digest == pwd_digest -> user
+      _ -> nil
+    end
+  end
+
+  @doc """
   Creates a changeset based on the `model` and `params`.
 
   If no params are provided, an invalid changeset is returned
@@ -22,17 +51,21 @@ defmodule Winter.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> digest_password(params)
+    |> validate_password
   end
 
-  defp digest_password changeset, params do
-    import Plug.Crypto.KeyGenerator, only: [generate: 2]
+  defp validate_password changeset do
     if changeset.valid? do
-      password = changeset.params["password"]
-      digest = to_hex generate(password, Winter.Endpoint.config :secret_key_base)
-      changeset = Ecto.Changeset.put_change changeset, :password_digest, digest
+      pwd = changeset.params["password"]
+      Ecto.Changeset.put_change changeset, :password_digest, digest_password(pwd)
+    else
+      changeset
     end
-    changeset
+  end
+
+  defp digest_password pwd do
+    import Plug.Crypto.KeyGenerator, only: [generate: 2]
+    to_hex generate(pwd, Winter.Endpoint.config :secret_key_base)
   end
 
   defp to_hex(value), do: Base.encode16(value, case: :lower)
