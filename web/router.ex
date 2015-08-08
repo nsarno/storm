@@ -7,6 +7,7 @@ defmodule Winter.Router do
 
   scope "/", Winter do
     pipe_through :api
+    resources "/auth_token", AuthTokenController, only: [:create]
     resources "/users", UserController
     resources "/targets", TargetController
   end
