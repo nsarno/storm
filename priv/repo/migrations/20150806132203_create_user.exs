@@ -3,12 +3,13 @@ defmodule Winter.Repo.Migrations.CreateUser do
 
   def change do
     create table(:users) do
-      add :name, :string
-      add :email, :string
-      add :password_digest, :string
+      add :name, :string, null: false
+      add :email, :string, null: false, index:
+      add :password_digest, :string, null: false
 
       timestamps
     end
 
+    create index(:users, [:email], unique: true)
   end
 end

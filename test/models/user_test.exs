@@ -32,4 +32,17 @@ defmodule Winter.UserTest do
     assert User.verify_password(user, user.password)
   end
 
+  test "validate password length" do
+    attrs = Map.merge @valid_attrs, %{password: String.duplicate("x", 5)}
+    changeset = User.changeset(%User{}, attrs)
+    refute changeset.valid?
+  end
+
+  test "validate uniqueness of email" do
+    user = factory :user
+    changeset = User.changeset(%User{}, attrs :user)
+
+    refute changeset.valid?
+    assert changeset.errors[:email]
+  end
 end

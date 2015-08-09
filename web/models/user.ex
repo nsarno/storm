@@ -34,15 +34,17 @@ defmodule Winter.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_unique(:email, on: Repo)
+    |> validate_length(:password, min: 6)
     |> validate_password
   end
 
   defp validate_password changeset do
-    if changeset.valid? do
-      digest = digest_password changeset.params["password"]
-      Ecto.Changeset.put_change changeset, :password_digest, digest
-    else
-      changeset
+    case changeset.params["password"] do
+      pwd when is_binary(pwd) ->
+        Ecto.Changeset.put_change changeset, :password_digest, digest_password(pwd)
+      _ ->
+        Ecto.Changeset.add_error changeset, :password, "invalid"
     end
   end
 

@@ -8,7 +8,7 @@ defmodule Winter.Factory do
 
 
   def attrs :user do
-    %User{
+    %{
       email: "john@example.com",
       name: "john",
       password: "secret",
@@ -20,7 +20,7 @@ defmodule Winter.Factory do
     factory :user, attrs(:user)
   end
 
-  def factory :user, %User{} = user do
-    Repo.insert! user
+  def factory :user, %{} = user do
+    Repo.insert! Map.merge(%User{}, user)
   end
 end
