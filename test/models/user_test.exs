@@ -39,7 +39,7 @@ defmodule Winter.UserTest do
   end
 
   test "validate uniqueness of email" do
-    user = factory :user
+    factory :user
     changeset = User.changeset(%User{}, attrs :user)
 
     refute changeset.valid?
