@@ -1,4 +1,5 @@
 # Winter
+[![Build Status](https://travis-ci.org/nsarno/winter.svg?branch=master)](https://travis-ci.org/nsarno/winter)
 
 To start your new Phoenix application:
 
