@@ -3,8 +3,8 @@ defmodule Winter.Repo.Migrations.CreateTarget do
 
   def change do
     create table(:targets) do
-      add :method, :string
-      add :url, :string
+      add :url, :string, null: false
+      add :method, :string, null: false
 
       timestamps
     end

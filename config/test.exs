@@ -16,4 +16,4 @@ config :winter, Winter.Repo,
   password: "postgres",
   database: "winter_test",
   pool: Ecto.Adapters.SQL.Sandbox, # Use a sandbox for transactional testing
-  size: 1
+  pool_size: 1

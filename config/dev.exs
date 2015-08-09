@@ -32,4 +32,4 @@ config :winter, Winter.Repo,
   username: "postgres",
   password: "postgres",
   database: "winter_dev",
-  size: 10 # The amount of database connections in the pool
+  pool_size: 10 # The amount of database connections in the pool
