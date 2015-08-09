@@ -33,6 +33,8 @@ defmodule Winter.Web do
 
       # Import URL helpers from the router
       import Winter.Router.Helpers
+
+      import Winter.AuthToken
     end
   end
 

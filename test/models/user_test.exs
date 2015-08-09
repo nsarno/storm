@@ -25,32 +25,11 @@ defmodule Winter.UserTest do
     assert changeset.changes.password_digest == digest
   end
 
-  test "find by email with valid attributes" do
-    changeset = User.changeset(%User{}, @valid_attrs)
-    {:ok, user} = Repo.insert(changeset)
+  test "verify password" do
+    user = factory :user
 
-    %Winter.User{} = User.find_by_email! @valid_attrs.email
-
-    _ = Repo.delete user
-  end
-
-  test "find by email with invalid attributes" do
-    assert_raise Ecto.NoResultsError, fn ->
-      User.find_by_email!(@valid_attrs.email)
-    end
-  end
-
-  test "validates email/password combination" do
-    assert_raise Ecto.NoResultsError, fn ->
-      User.authenticate!(@valid_attrs.email, @valid_attrs.password)
-    end
-
-    changeset = User.changeset(%User{}, @valid_attrs)
-    {:ok, user} = Repo.insert(changeset)
-
-    %Winter.User{} = User.authenticate! @valid_attrs.email, @valid_attrs.password
-
-    _ = Repo.delete user
+    refute User.verify_password(user, "invalid")
+    assert User.verify_password(user, user.password)
   end
 
 end

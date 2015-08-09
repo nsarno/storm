@@ -21,6 +21,7 @@ defmodule Winter.ModelCase do
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
       import Winter.ModelCase
+      import Winter.Factory
     end
   end
 

@@ -6,4 +6,8 @@ defmodule Winter.ChangesetView do
     # as a JSON object. So we just pass it forward.
     %{errors: changeset}
   end
+
+  def render("error.json", %{reason: reason}) do
+    %{errors: reason}
+  end
 end

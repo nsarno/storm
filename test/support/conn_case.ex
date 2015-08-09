@@ -28,6 +28,8 @@ defmodule Winter.ConnCase do
       # Import URL helpers from the router
       import Winter.Router.Helpers
 
+      import Winter.Factory
+
       # The default endpoint for testing
       @endpoint Winter.Endpoint
     end

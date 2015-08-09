@@ -4,6 +4,7 @@ defmodule Winter.UserController do
   alias Winter.User
 
   plug :scrub_params, "user" when action in [:create, :update]
+  # plug :authenticate!
 
   def index(conn, _params) do
     users = Repo.all(User)

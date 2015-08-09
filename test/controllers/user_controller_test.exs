@@ -63,4 +63,11 @@ defmodule Winter.UserControllerTest do
     assert response(conn, 204)
     refute Repo.get(User, user.id)
   end
+
+  # test "authenticate before user update", %{conn: conn} do
+  #   user = Repo.insert! %User{}
+  #   conn = put conn, user_path(conn, :update, user), user: @valid_attrs
+  #   assert json_response(conn, 401)
+  #   refute Repo.get_by(User, @valid_fields)
+  # end
 end

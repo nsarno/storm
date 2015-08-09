@@ -1,21 +1,22 @@
 defmodule Winter.AuthTokenControllerTest do
   use Winter.ConnCase
 
-  alias Winter.User
-
-  @valid_attrs %{email: "john@example.com", name: "john", password: "secret"}
-  @invalid_attrs %{}
-
   setup do
-    changeset = User.changeset(%User{}, @valid_attrs)
-    {:ok, user} = Repo.insert(changeset)
-    {:ok, user: user}
+    conn = conn() |> put_req_header("accept", "application/json")
+    {:ok, conn: conn}
   end
 
-  test "creates and renders resource when data is valid", %{user: user} do
+  test "creates and renders resource when data is valid", %{conn: conn} do
+    user = factory :user
     conn = post conn, auth_token_path(conn, :create), auth_token: %{
-      email: user.email, password: user.password
+      email: user.email,
+      password: user.password
     }
     assert json_response(conn, 200)["data"]["jwt"]
+  end
+
+  test "does not create resource and renders errors when data is invalid", %{conn: conn} do
+    conn = post conn, auth_token_path(conn, :create), auth_token: %{}
+    assert json_response(conn, 422)["errors"] != %{}
   end
 end
