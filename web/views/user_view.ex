@@ -2,11 +2,11 @@ defmodule Winter.UserView do
   use Winter.Web, :view
 
   def render("index.json", %{users: users}) do
-    %{data: render_many(users, "user.json")}
+    %{data: render_many(users, Winter.UserView, "user.json")}
   end
 
   def render("show.json", %{user: user}) do
-    %{data: render_one(user, "user.json")}
+    %{data: render_one(user, Winter.UserView, "user.json")}
   end
 
   def render("user.json", %{user: user}) do

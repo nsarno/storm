@@ -8,6 +8,7 @@ defmodule Winter.AuthTokenControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     user = factory :user
+
     conn = post conn, auth_token_path(conn, :create), auth_token: %{
       email: user.email,
       password: user.password

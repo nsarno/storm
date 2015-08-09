@@ -16,9 +16,10 @@ defmodule Winter.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Winter, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+    [
+      mod: {Winter, []},
+      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :phoenix_ecto, :postgrex]
+    ]
   end
 
   # Specifies which paths to compile per environment
@@ -29,10 +30,10 @@ defmodule Winter.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.14"},
-     {:phoenix_ecto, "~> 0.5"},
+    [{:phoenix, "~> 0.15"},
+     {:phoenix_ecto, "~> 0.8"},
+     {:phoenix_html, "~> 1.4"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 1.1"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
      {:joken, "~> 0.15"}]
