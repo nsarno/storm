@@ -34,7 +34,7 @@ defmodule Winter.Web do
       # Import URL helpers from the router
       import Winter.Router.Helpers
 
-      import Winter.AuthToken
+      import Winter.AuthToken, only: [authenticate!: 2]
     end
   end
 

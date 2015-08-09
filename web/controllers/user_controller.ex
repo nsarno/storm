@@ -3,8 +3,6 @@ defmodule Winter.UserController do
 
   alias Winter.User
 
-  import Winter.AuthToken, only: [authenticate!: 2]
-
   plug :scrub_params, "user" when action in [:create, :update]
   plug :authenticate! when action in [:update]
 

@@ -9,6 +9,7 @@ defmodule Winter.Router do
     pipe_through :api
     resources "/auth_token", AuthTokenController, only: [:create]
     resources "/users", UserController
+    resources "/projects", ProjectController
     resources "/targets", TargetController
   end
 end
