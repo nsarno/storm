@@ -12,7 +12,7 @@ defmodule Winter.AuthTokenTest do
   end
 
   test "authenticate! plug validate auth token" do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
 
     token = AuthToken.generate_token user
     conn = conn() |> put_req_header("authorization", "Bearer " <> token.jwt)

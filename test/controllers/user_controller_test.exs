@@ -19,7 +19,7 @@ defmodule Winter.UserControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
+    user = factory(:user) |> Repo.insert!
     conn = get conn, user_path(conn, :show, user)
     assert json_response(conn, 200)["data"] == %{
       "id" => user.id,
@@ -46,7 +46,7 @@ defmodule Winter.UserControllerTest do
   end
 
   test "authenticate before user update", %{conn: conn} do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
     updated_fields = %{name: "John Better"}
 
     conn = put conn, user_path(conn, :update, user), user: updated_fields
@@ -55,7 +55,7 @@ defmodule Winter.UserControllerTest do
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
     token = AuthToken.generate_token user
     conn = conn |> put_req_header("authorization", "Bearer " <> token.jwt)
 
@@ -65,7 +65,7 @@ defmodule Winter.UserControllerTest do
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
     token = AuthToken.generate_token user
     conn = conn |> put_req_header("authorization", "Bearer " <> token.jwt)
 
@@ -74,8 +74,9 @@ defmodule Winter.UserControllerTest do
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
     conn = delete conn, user_path(conn, :delete, user)
+
     assert response(conn, 204)
     refute Repo.get(User, user.id)
   end

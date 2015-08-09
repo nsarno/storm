@@ -16,7 +16,7 @@ defmodule Winter.TargetControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    target = factory :target
+    target = factory(:target) |> Repo.insert!
     conn = get conn, target_path(conn, :show, target)
     assert json_response(conn, 200)["data"] == %{
       "id" => target.id,
@@ -43,20 +43,20 @@ defmodule Winter.TargetControllerTest do
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    target = factory :target
+    target = factory(:target) |> Repo.insert!
     conn = put conn, target_path(conn, :update, target), target: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(Target, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    target = factory :target
+    target = factory(:target) |> Repo.insert!
     conn = put conn, target_path(conn, :update, target), target: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    target = factory :target
+    target = factory(:target) |> Repo.insert!
     conn = delete conn, target_path(conn, :delete, target)
     assert response(conn, 204)
     refute Repo.get(Target, target.id)

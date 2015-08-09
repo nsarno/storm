@@ -26,7 +26,7 @@ defmodule Winter.UserTest do
   end
 
   test "verify password" do
-    user = factory :user
+    user = factory(:user) |> Repo.insert!
 
     refute User.verify_password(user, "invalid")
     assert User.verify_password(user, user.password)
@@ -39,8 +39,8 @@ defmodule Winter.UserTest do
   end
 
   test "validate uniqueness of email" do
-    factory :user
-    changeset = User.changeset(%User{}, attrs :user)
+    factory(:user) |> Repo.insert!
+    changeset = User.changeset(%User{}, attrs(:user))
 
     refute changeset.valid?
     assert changeset.errors[:email]

@@ -7,12 +7,9 @@ defmodule Winter.AuthTokenControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    user = factory :user
+    factory(:user) |> Repo.insert!
 
-    conn = post conn, auth_token_path(conn, :create), auth_token: %{
-      email: user.email,
-      password: user.password
-    }
+    conn = post conn, auth_token_path(conn, :create), auth_token: attrs(:user)
     assert json_response(conn, 200)["data"]["jwt"]
   end
 
