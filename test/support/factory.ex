@@ -5,7 +5,7 @@ defmodule Winter.Factory do
 
   alias Winter.Repo
   alias Winter.User
-
+  alias Winter.Target
 
   def attrs :user do
     %{
@@ -16,11 +16,23 @@ defmodule Winter.Factory do
     }
   end
 
+  def attrs :target do
+    %{url: "https://github.com/", method: "GET"}
+  end
+
   def factory :user do
     factory :user, attrs(:user)
   end
 
+  def factory :target do
+    factory :target, attrs(:target)
+  end
+
   def factory :user, %{} = user do
     Repo.insert! Map.merge(%User{}, user)
+  end
+
+  def factory :target, %{} = target do
+    Repo.insert! Map.merge(%Target{}, target)
   end
 end

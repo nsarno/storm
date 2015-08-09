@@ -18,7 +18,7 @@ defmodule Winter.Target do
   with no validation performed.
   """
   def changeset(model, params \\ :empty) do
-    model
+    model 
     |> cast(params, @required_fields, @optional_fields)
   end
 end

@@ -31,7 +31,6 @@ defmodule Winter.TargetController do
   def update(conn, %{"id" => id, "target" => target_params}) do
     target = Repo.get!(Target, id)
     changeset = Target.changeset(target, target_params)
-
     case Repo.update(changeset) do
       {:ok, target} ->
         render(conn, "show.json", target: target)

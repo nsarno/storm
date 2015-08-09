@@ -3,7 +3,7 @@ defmodule Winter.TargetTest do
 
   alias Winter.Target
 
-  @valid_attrs %{method: "some content", url: "some content"}
+  @valid_attrs %{url: "https://gist.github.com/", method: "GET"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
