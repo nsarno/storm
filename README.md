@@ -1,7 +1,7 @@
 # Storm
 [![Build Status](https://travis-ci.org/nsarno/storm.svg?branch=master)](https://travis-ci.org/nsarno/storm)
 
-Stormtest project through which I intend to learn about [Elixir](http://elixir-lang.org/) & [Phoenix](http://www.phoenixframework.org/).
+Storm is a test project through which I intend to learn about [Elixir](http://elixir-lang.org/) & [Phoenix](http://www.phoenixframework.org/).
 
 ## Description
 
