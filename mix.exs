@@ -36,6 +36,8 @@ defmodule Winter.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:joken, "~> 0.15"}]
+     {:joken, "~> 0.15"},
+     {:earmark, "~> 0.1", only: :dev},
+     {:ex_doc, "~> 0.8", only: :dev}]
   end
 end
