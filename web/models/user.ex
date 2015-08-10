@@ -10,6 +10,7 @@ defmodule Winter.User do
     field :password_digest, :string
     field :password, :string, virtual: true
     has_many :projects, Winter.Project
+    has_many :projects_missions, through: [:projects, :missions]
 
     timestamps
   end

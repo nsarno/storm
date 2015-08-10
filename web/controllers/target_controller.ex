@@ -4,6 +4,8 @@ defmodule Winter.TargetController do
   alias Winter.Target
 
   plug :scrub_params, "target" when action in [:create, :update]
+  plug :authenticate!
+  plug :find_mission when action in [:index, :create]
 
   def index(conn, _params) do
     targets = Repo.all(Target)
@@ -11,7 +13,7 @@ defmodule Winter.TargetController do
   end
 
   def create(conn, %{"target" => target_params}) do
-    changeset = Target.changeset(%Target{}, target_params)
+    changeset = Target.changeset(%Target{}, conn.assigns[:mission], target_params)
 
     case Repo.insert(changeset) do
       {:ok, target} ->
@@ -49,5 +51,10 @@ defmodule Winter.TargetController do
     _target = Repo.delete!(target)
 
     send_resp(conn, :no_content, "")
+  end
+
+  defp find_mission conn, _ do
+    conn
+    |> assign(:mission, Repo.get!(assoc(conn.assigns[:user], :projects_missions), conn.params["mission_id"]))
   end
 end

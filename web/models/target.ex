@@ -4,6 +4,7 @@ defmodule Winter.Target do
   schema "targets" do
     field :method, :string
     field :url, :string
+    belongs_to :mission, Winter.Mission
 
     timestamps
   end
@@ -20,5 +21,10 @@ defmodule Winter.Target do
   def changeset(model, params \\ :empty) do
     model 
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def changeset(model, %Winter.Mission{id: m_id}, params) do
+    changeset(model, params)
+    |> put_change(:mission_id, m_id)
   end
 end

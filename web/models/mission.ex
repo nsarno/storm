@@ -22,8 +22,8 @@ defmodule Winter.Mission do
     |> cast(params, @required_fields, @optional_fields)
   end
 
-  def changeset(model, %Winter.Project{id: project_id}, params) do
+  def changeset(model, %Winter.Project{id: p_id}, params) do
     changeset(model, params)
-    |> put_change(:project_id, project_id)
+    |> put_change(:project_id, p_id)
   end
 end

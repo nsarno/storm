@@ -4,6 +4,7 @@ defmodule Winter.Project do
   schema "projects" do
     field :name, :string
     belongs_to :user, Winter.User
+    has_many :missions, Winter.Mission
 
     timestamps
   end
