@@ -1,9 +1,9 @@
-defmodule Winter.AuthToken do
+defmodule Storm.AuthToken do
   defstruct jwt: nil
 
-  alias Winter.AuthToken
-  alias Winter.User
-  alias Winter.Repo
+  alias Storm.AuthToken
+  alias Storm.User
+  alias Storm.Repo
 
   @doc """
     Plug for JWT authentication.
@@ -19,7 +19,7 @@ defmodule Winter.AuthToken do
       {:error, message} ->
         conn
         |> put_status(:unauthorized)
-        |> render(Winter.ErrorView, "401.json")
+        |> render(Storm.ErrorView, "401.json")
         |> halt
     end
   end

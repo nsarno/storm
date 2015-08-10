@@ -1,7 +1,7 @@
-defmodule Winter.UserController do
-  use Winter.Web, :controller
+defmodule Storm.UserController do
+  use Storm.Web, :controller
 
-  alias Winter.User
+  alias Storm.User
 
   plug :scrub_params, "user" when action in [:create, :update]
   plug :authenticate! when action in [:update]
@@ -20,7 +20,7 @@ defmodule Winter.UserController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule Winter.UserController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

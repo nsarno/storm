@@ -1,7 +1,7 @@
-defmodule Winter.ProjectController do
-  use Winter.Web, :controller
+defmodule Storm.ProjectController do
+  use Storm.Web, :controller
 
-  alias Winter.Project
+  alias Storm.Project
 
   plug :scrub_params, "project" when action in [:create, :update]
   plug :authenticate!
@@ -22,7 +22,7 @@ defmodule Winter.ProjectController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -41,7 +41,7 @@ defmodule Winter.ProjectController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

@@ -1,7 +1,7 @@
-defmodule Winter.MissionController do
-  use Winter.Web, :controller
+defmodule Storm.MissionController do
+  use Storm.Web, :controller
 
-  alias Winter.Mission
+  alias Storm.Mission
 
   plug :scrub_params, "mission" when action in [:create, :update]
   plug :authenticate!
@@ -23,7 +23,7 @@ defmodule Winter.MissionController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -42,7 +42,7 @@ defmodule Winter.MissionController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

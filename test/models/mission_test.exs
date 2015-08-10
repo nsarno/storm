@@ -1,7 +1,7 @@
-defmodule Winter.MissionTest do
-  use Winter.ModelCase
+defmodule Storm.MissionTest do
+  use Storm.ModelCase
 
-  alias Winter.Mission
+  alias Storm.Mission
 
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}

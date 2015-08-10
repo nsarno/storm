@@ -1,5 +1,5 @@
-defmodule Winter.ChangesetView do
-  use Winter.Web, :view
+defmodule Storm.ChangesetView do
+  use Storm.Web, :view
 
   def render("error.json", %{changeset: changeset}) do
     # When encoded, the changeset returns its errors

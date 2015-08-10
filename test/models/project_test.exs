@@ -1,7 +1,7 @@
-defmodule Winter.ProjectTest do
-  use Winter.ModelCase
+defmodule Storm.ProjectTest do
+  use Storm.ModelCase
 
-  alias Winter.Project
+  alias Storm.Project
 
   test "changeset with valid attributes" do
     changeset = Project.changeset(%Project{}, attrs(%Project{}))

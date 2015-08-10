@@ -1,4 +1,4 @@
-defmodule Winter.ConnCase do
+defmodule Storm.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -21,23 +21,23 @@ defmodule Winter.ConnCase do
       use Phoenix.ConnTest
 
       # Alias the data repository and import query/model functions
-      alias Winter.Repo
+      alias Storm.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
-      import Winter.Router.Helpers
+      import Storm.Router.Helpers
 
-      import Winter.Factory
+      import Storm.Factory
 
       # The default endpoint for testing
-      @endpoint Winter.Endpoint
+      @endpoint Storm.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Winter.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Storm.Repo, [])
     end
 
     :ok

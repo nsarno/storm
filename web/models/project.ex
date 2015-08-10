@@ -1,10 +1,10 @@
-defmodule Winter.Project do
-  use Winter.Web, :model
+defmodule Storm.Project do
+  use Storm.Web, :model
 
   schema "projects" do
     field :name, :string
-    belongs_to :user, Winter.User
-    has_many :missions, Winter.Mission
+    belongs_to :user, Storm.User
+    has_many :missions, Storm.Mission
 
     timestamps
   end
@@ -23,7 +23,7 @@ defmodule Winter.Project do
     |> cast(params, @required_fields, @optional_fields)
   end
 
-  def changeset(model, %Winter.User{id: user_id}, params) do
+  def changeset(model, %Storm.User{id: user_id}, params) do
     changeset(model, params)
     |> put_change(:user_id, user_id)
   end

@@ -1,7 +1,7 @@
-defmodule Winter.UserTest do
-  use Winter.ModelCase
+defmodule Storm.UserTest do
+  use Storm.ModelCase
 
-  alias Winter.User
+  alias Storm.User
 
   test "changeset with valid attributes" do
     changeset = User.changeset(%User{}, attrs(%User{}))

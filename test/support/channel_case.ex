@@ -1,4 +1,4 @@
-defmodule Winter.ChannelCase do
+defmodule Storm.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,19 +21,19 @@ defmodule Winter.ChannelCase do
       use Phoenix.ChannelTest
 
       # Alias the data repository and import query/model functions
-      alias Winter.Repo
+      alias Storm.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
 
       # The default endpoint for testing
-      @endpoint Winter.Endpoint
+      @endpoint Storm.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Winter.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Storm.Repo, [])
     end
 
     :ok

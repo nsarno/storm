@@ -1,15 +1,15 @@
-defmodule Winter.MissionControllerTest do
-  use Winter.ConnCase
+defmodule Storm.MissionControllerTest do
+  use Storm.ConnCase
 
-  alias Winter.Mission
+  alias Storm.Mission
 
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{name: nil}
 
   setup do
-    user = factory(%Winter.User{}, :insert)
-    token = Winter.AuthToken.generate_token(user)
-    project = factory(%Winter.Project{user_id: user.id}, :insert)
+    user = factory(%Storm.User{}, :insert)
+    token = Storm.AuthToken.generate_token(user)
+    project = factory(%Storm.Project{user_id: user.id}, :insert)
     mission = factory(%Mission{project_id: project.id}, :insert)
 
     conn = conn()

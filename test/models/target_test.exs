@@ -1,7 +1,7 @@
-defmodule Winter.TargetTest do
-  use Winter.ModelCase
+defmodule Storm.TargetTest do
+  use Storm.ModelCase
 
-  alias Winter.Target
+  alias Storm.Target
 
   @valid_attrs %{url: "https://gist.github.com/", method: "GET"}
   @invalid_attrs %{}

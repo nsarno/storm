@@ -1,7 +1,7 @@
-defmodule Winter.Config.Joken do
+defmodule Storm.Config.Joken do
   @behaviour Joken.Config
 
-  def secret_key(), do: Winter.Endpoint.config :secret_key_base
+  def secret_key(), do: Storm.Endpoint.config :secret_key_base
 
   def algorithm(), do: :HS256
 

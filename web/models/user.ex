@@ -1,15 +1,15 @@
-defmodule Winter.User do
-  use Winter.Web, :model
+defmodule Storm.User do
+  use Storm.Web, :model
   import Ecto.Query
-  alias Winter.User
-  alias Winter.Repo
+  alias Storm.User
+  alias Storm.Repo
 
   schema "users" do
     field :name, :string
     field :email, :string
     field :password_digest, :string
     field :password, :string, virtual: true
-    has_many :projects, Winter.Project
+    has_many :projects, Storm.Project
     has_many :projects_missions, through: [:projects, :missions]
 
     timestamps
@@ -57,7 +57,7 @@ defmodule Winter.User do
   """
   def digest_password pwd do
     import Plug.Crypto.KeyGenerator, only: [generate: 2]
-    to_hex generate(pwd, Winter.Endpoint.config :secret_key_base)
+    to_hex generate(pwd, Storm.Endpoint.config :secret_key_base)
   end
 
   defp to_hex(value), do: Base.encode16(value, case: :lower)

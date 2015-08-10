@@ -1,4 +1,4 @@
-defmodule Winter.Repo.Migrations.CreateUser do
+defmodule Storm.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do

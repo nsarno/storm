@@ -1,4 +1,4 @@
-defmodule Winter.Repo.Migrations.CreateProject do
+defmodule Storm.Repo.Migrations.CreateProject do
   use Ecto.Migration
 
   def change do

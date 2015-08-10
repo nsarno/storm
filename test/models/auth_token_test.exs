@@ -1,9 +1,9 @@
-defmodule Winter.AuthTokenTest do
-  use Winter.ModelCase
-  use Winter.ConnCase
+defmodule Storm.AuthTokenTest do
+  use Storm.ModelCase
+  use Storm.ConnCase
 
-  alias Winter.AuthToken
-  alias Winter.User
+  alias Storm.AuthToken
+  alias Storm.User
 
   test "generate json web token" do
     user = factory %User{}, :insert

@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :winter, Winter.Endpoint,
+config :storm, Storm.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -14,7 +14,7 @@ config :winter, Winter.Endpoint,
   watchers: []
 
 # Watch static and templates for browser reloading.
-config :winter, Winter.Endpoint,
+config :storm, Storm.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
@@ -27,9 +27,9 @@ config :winter, Winter.Endpoint,
 config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
-config :winter, Winter.Repo,
+config :storm, Storm.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "winter_dev",
+  database: "storm_dev",
   pool_size: 10 # The amount of database connections in the pool

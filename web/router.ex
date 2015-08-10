@@ -1,11 +1,11 @@
-defmodule Winter.Router do
-  use Winter.Web, :router
+defmodule Storm.Router do
+  use Storm.Web, :router
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", Winter do
+  scope "/", Storm do
     pipe_through :api
 
  

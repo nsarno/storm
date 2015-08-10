@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Winter.Router</title>
+    <title>Storm.AuthToken</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc">
@@ -27,7 +27,7 @@
 
   <h1 id="full_list_header">
     
-      winter v0.0.1
+      storm v0.0.1
     
   </h1>
 
@@ -78,11 +78,11 @@
         <button type="button" class="btn btn-default btn-sm" data-toggle="offcanvas">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
-        winter v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Winter.html#content">Winter</a> &rarr; <a href="Winter.Router.html#content">Router</a>
+        storm v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Storm.html#content">Storm</a> &rarr; <a href="Storm.AuthToken.html#content">AuthToken</a>
       </div>
 
       <h1>
-        Winter.Router
+        Storm.AuthToken
         
       </h1>
 
@@ -107,14 +107,18 @@
           <h1>Summary</h1>
           <table class="summary">
             <tr>
-  <td class="summary_signature"><a href="#call/2">call(conn, opts)</a></td>
-  <td class="summary_synopsis"><p>Callback invoked by Plug on every request</p>
+  <td class="summary_signature"><a href="#authenticate!/2">authenticate!(conn, )</a></td>
+  <td class="summary_synopsis"><p>Plug for JWT authentication</p>
 </td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#init/1">init(opts)</a></td>
-  <td class="summary_synopsis"><p>Callback required by Plug that initializes the router
-for serving web requests</p>
+  <td class="summary_signature"><a href="#decode_token/1">decode_token(token)</a></td>
+  <td class="summary_synopsis"><p>Decode a Json Web Token</p>
+</td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#generate_token/1">generate_token(user)</a></td>
+  <td class="summary_synopsis"><p>Generate a Json Web Token</p>
 </td>
 </tr>
 
@@ -128,34 +132,50 @@ for serving web requests</p>
         <section id="functions_details" class="details_list">
           <h1>Functions</h1>
           <section class="detail">
-  <div class="detail_header" id="call/2">
-    <span class="signature"><strong>call(conn, opts)</strong></span>
+  <div class="detail_header" id="authenticate!/2">
+    <span class="signature"><strong>authenticate!(conn, )</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#call/2" class="detail_link" title="Link to this function">#</a>
+      <a href="#authenticate!/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Callback invoked by Plug on every request.</p>
+    <p>  Plug for JWT authentication.</p>
 
   </section>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="init/1">
-    <span class="signature"><strong>init(opts)</strong></span>
+  <div class="detail_header" id="decode_token/1">
+    <span class="signature"><strong>decode_token(token)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#init/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#decode_token/1" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Callback required by Plug that initializes the router
-for serving web requests.</p>
+    <p>  Decode a Json Web Token.</p>
+<p>  Returns {:ok | :error, payload | :invalid_token}</p>
+
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="generate_token/1">
+    <span class="signature"><strong>generate_token(user)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#generate_token/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>  Generate a Json Web Token.</p>
 
   </section>
   

@@ -1,5 +1,5 @@
-defmodule Winter.ErrorView do
-  use Winter.Web, :view
+defmodule Storm.ErrorView do
+  use Storm.Web, :view
 
   def render("404.json", _assigns) do
     %{error: "Page not found"}

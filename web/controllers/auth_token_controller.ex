@@ -1,8 +1,8 @@
-defmodule Winter.AuthTokenController do
-  use Winter.Web, :controller
+defmodule Storm.AuthTokenController do
+  use Storm.Web, :controller
 
-  alias Winter.AuthToken
-  alias Winter.User
+  alias Storm.AuthToken
+  alias Storm.User
 
   plug :scrub_params, "auth_token"
   plug :filter_params
@@ -22,7 +22,7 @@ defmodule Winter.AuthTokenController do
       _ ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", reason: "Missing email and/or password")
+        |> render(Storm.ChangesetView, "error.json", reason: "Missing email and/or password")
         |> halt
     end
   end
@@ -34,7 +34,7 @@ defmodule Winter.AuthTokenController do
       _ ->
         conn
         |> put_status(:not_found)
-        |> render(Winter.ChangesetView, "error.json", reason: "Invalid credentials")
+        |> render(Storm.ChangesetView, "error.json", reason: "Invalid credentials")
         |> halt
     end
   end
@@ -45,7 +45,7 @@ defmodule Winter.AuthTokenController do
     else
       conn
       |> put_status(:not_found)
-      |> render(Winter.ChangesetView, "error.json", reason: "Invalid credentials")
+      |> render(Storm.ChangesetView, "error.json", reason: "Invalid credentials")
       |> halt
     end
   end

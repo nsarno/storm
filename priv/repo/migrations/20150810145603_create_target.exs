@@ -1,4 +1,4 @@
-defmodule Winter.Repo.Migrations.CreateTarget do
+defmodule Storm.Repo.Migrations.CreateTarget do
   use Ecto.Migration
 
   def change do

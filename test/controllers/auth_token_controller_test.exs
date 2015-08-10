@@ -1,5 +1,5 @@
-defmodule Winter.AuthTokenControllerTest do
-  use Winter.ConnCase
+defmodule Storm.AuthTokenControllerTest do
+  use Storm.ConnCase
 
   setup do
     conn = conn() |> put_req_header("accept", "application/json")
@@ -7,7 +7,7 @@ defmodule Winter.AuthTokenControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    user = factory(%Winter.User{}, :insert)
+    user = factory(%Storm.User{}, :insert)
     valid_attrs = %{email: user.email, password: user.password}
 
     conn = post conn, auth_token_path(conn, :create), auth_token: valid_attrs

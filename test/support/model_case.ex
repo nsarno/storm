@@ -1,4 +1,4 @@
-defmodule Winter.ModelCase do
+defmodule Storm.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -17,17 +17,17 @@ defmodule Winter.ModelCase do
   using do
     quote do
       # Alias the data repository and import query/model functions
-      alias Winter.Repo
+      alias Storm.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
-      import Winter.ModelCase
-      import Winter.Factory
+      import Storm.ModelCase
+      import Storm.Factory
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Winter.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Storm.Repo, [])
     end
 
     :ok

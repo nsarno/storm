@@ -1,8 +1,8 @@
-defmodule Winter.UserControllerTest do
-  use Winter.ConnCase
+defmodule Storm.UserControllerTest do
+  use Storm.ConnCase
 
-  alias Winter.User
-  alias Winter.AuthToken
+  alias Storm.User
+  alias Storm.AuthToken
 
   setup do
     conn = conn() |> put_req_header("accept", "application/json")

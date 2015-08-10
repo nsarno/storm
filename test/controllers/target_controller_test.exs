@@ -1,15 +1,15 @@
-defmodule Winter.TargetControllerTest do
-  use Winter.ConnCase
+defmodule Storm.TargetControllerTest do
+  use Storm.ConnCase
 
-  alias Winter.Target
+  alias Storm.Target
   @valid_attrs %{url: "https://gist.github.com/", method: "GET"}
   @invalid_attrs %{url: nil, method: nil}
 
   setup do
-    user = factory(%Winter.User{}, :insert)
-    token = Winter.AuthToken.generate_token(user)
-    project = factory(%Winter.Project{user_id: user.id}, :insert)
-    mission = factory(%Winter.Mission{project_id: project.id}, :insert)
+    user = factory(%Storm.User{}, :insert)
+    token = Storm.AuthToken.generate_token(user)
+    project = factory(%Storm.Project{user_id: user.id}, :insert)
+    mission = factory(%Storm.Mission{project_id: project.id}, :insert)
     target = factory(%Target{mission_id: mission.id}, :insert)
 
     conn = conn()

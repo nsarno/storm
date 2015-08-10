@@ -1,14 +1,14 @@
-defmodule Winter.ProjectControllerTest do
-  use Winter.ConnCase
+defmodule Storm.ProjectControllerTest do
+  use Storm.ConnCase
 
-  alias Winter.Project
+  alias Storm.Project
 
   @valid_attrs %{name: "some project"}
   @invalid_attrs %{name: nil}
 
   setup do
-    user = factory(%Winter.User{}, :insert)
-    token = Winter.AuthToken.generate_token(user)
+    user = factory(%Storm.User{}, :insert)
+    token = Storm.AuthToken.generate_token(user)
     project = factory(%Project{user_id: user.id}, :insert)
 
     conn = conn() 

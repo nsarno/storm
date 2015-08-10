@@ -1,28 +1,28 @@
-defmodule Winter.Factory do
+defmodule Storm.Factory do
   @moduledoc """
     Provides helper functions to easily run test against persisted data.
   """
 
-  alias Winter.User
-  alias Winter.Project
-  alias Winter.Target
+  alias Storm.User
+  alias Storm.Project
+  alias Storm.Target
 
-  def attrs %Winter.User{} do
+  def attrs %Storm.User{} do
     %{email: uniq <> "@example.com",
       name: "john",
       password: "secret",
       password_digest: User.digest_password "secret"}
   end
 
-  def attrs %Winter.Project{} do
+  def attrs %Storm.Project{} do
     %{name: "blairwitch"}
   end
 
-  def attrs %Winter.Mission{} do
+  def attrs %Storm.Mission{} do
     %{name: "impossible"}
   end
 
-  def attrs %Winter.Target{} do
+  def attrs %Storm.Target{} do
     %{url: "https://github.com/", method: "GET"}
   end
 
@@ -31,7 +31,7 @@ defmodule Winter.Factory do
   end
 
   def factory model, :insert do
-    factory(model) |> Winter.Repo.insert!
+    factory(model) |> Storm.Repo.insert!
   end
 
   defp uniq do

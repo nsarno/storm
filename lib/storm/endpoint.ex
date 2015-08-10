@@ -1,12 +1,12 @@
-defmodule Winter.Endpoint do
-  use Phoenix.Endpoint, otp_app: :winter
+defmodule Storm.Endpoint do
+  use Phoenix.Endpoint, otp_app: :storm
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :winter, gzip: false,
+    at: "/", from: :storm, gzip: false,
     only: ~w(css images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -29,8 +29,8 @@ defmodule Winter.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_winter_key",
+    key: "_storm_key",
     signing_salt: "1KI8UKYa"
 
-  plug Winter.Router
+  plug Storm.Router
 end

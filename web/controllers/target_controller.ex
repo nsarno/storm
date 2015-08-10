@@ -1,7 +1,7 @@
-defmodule Winter.TargetController do
-  use Winter.Web, :controller
+defmodule Storm.TargetController do
+  use Storm.Web, :controller
 
-  alias Winter.Target
+  alias Storm.Target
 
   plug :scrub_params, "target" when action in [:create, :update]
   plug :authenticate!
@@ -21,7 +21,7 @@ defmodule Winter.TargetController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule Winter.TargetController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Winter.ChangesetView, "error.json", changeset: changeset)
+        |> render(Storm.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

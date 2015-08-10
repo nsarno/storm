@@ -1,12 +1,12 @@
-defmodule Winter.Web do
+defmodule Storm.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Winter.Web, :controller
-      use Winter.Web, :view
+      use Storm.Web, :controller
+      use Storm.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -27,14 +27,14 @@ defmodule Winter.Web do
       use Phoenix.Controller
 
       # Alias the data repository and import query/model functions
-      alias Winter.Repo
+      alias Storm.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
-      import Winter.Router.Helpers
+      import Storm.Router.Helpers
 
-      import Winter.AuthToken, only: [authenticate!: 2]
+      import Storm.AuthToken, only: [authenticate!: 2]
     end
   end
 
@@ -46,7 +46,7 @@ defmodule Winter.Web do
       import Phoenix.Controller, only: [view_module: 1]
 
       # Import URL helpers from the router
-      import Winter.Router.Helpers
+      import Storm.Router.Helpers
     end
   end
 
@@ -61,7 +61,7 @@ defmodule Winter.Web do
       use Phoenix.Channel
 
       # Alias the data repository and import query/model functions
-      alias Winter.Repo
+      alias Storm.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

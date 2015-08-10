@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Winter.Router.Helpers</title>
+    <title>Storm.Router.Helpers</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc">
@@ -27,7 +27,7 @@
 
   <h1 id="full_list_header">
     
-      winter v0.0.1
+      storm v0.0.1
     
   </h1>
 
@@ -78,11 +78,11 @@
         <button type="button" class="btn btn-default btn-sm" data-toggle="offcanvas">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
-        winter v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Winter.html#content">Winter</a> &rarr; <a href="Winter.Router.html#content">Router</a> &rarr; <a href="Winter.Router.Helpers.html#content">Helpers</a>
+        storm v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Storm.html#content">Storm</a> &rarr; <a href="Storm.Router.html#content">Router</a> &rarr; <a href="Storm.Router.Helpers.html#content">Helpers</a>
       </div>
 
       <h1>
-        Winter.Router.Helpers
+        Storm.Router.Helpers
         
       </h1>
 
@@ -100,7 +100,7 @@
 
       
         <section id="moduledoc" class="docstring">
-          <p>Module with named helpers generated from Winter.Router.</p>
+          <p>Module with named helpers generated from Storm.Router.</p>
 
         </section>
       
@@ -128,9 +128,57 @@
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
+  <td class="summary_signature"><a href="#mission_path/3">mission_path(conn_or_endpoint, atom2, id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_path/4">mission_path(conn_or_endpoint, atom2, id, params)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_target_path/3">mission_target_path(conn_or_endpoint, atom2, mission_id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_target_path/4">mission_target_path(conn_or_endpoint, atom2, mission_id, params)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_target_url/3">mission_target_url(conn_or_endpoint, atom2, mission_id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_target_url/4">mission_target_url(conn_or_endpoint, atom2, mission_id, params)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_url/3">mission_url(conn_or_endpoint, atom2, id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mission_url/4">mission_url(conn_or_endpoint, atom2, id, params)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
   <td class="summary_signature"><a href="#path/2">path(conn, path)</a></td>
   <td class="summary_synopsis"><p>Generates the path information including any necessary prefix</p>
 </td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#project_mission_path/3">project_mission_path(conn_or_endpoint, atom2, project_id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#project_mission_path/4">project_mission_path(conn_or_endpoint, atom2, project_id, params)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#project_mission_url/3">project_mission_url(conn_or_endpoint, atom2, project_id)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#project_mission_url/4">project_mission_url(conn_or_endpoint, atom2, project_id, params)</a></td>
+  <td class="summary_synopsis"></td>
 </tr>
 <tr>
   <td class="summary_signature"><a href="#project_path/2">project_path(conn_or_endpoint, atom2)</a></td>
@@ -167,11 +215,7 @@
 </td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#target_path/2">target_path(conn_or_endpoint, atom2)</a></td>
-  <td class="summary_synopsis"></td>
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#target_path/3">target_path(conn_or_endpoint, atom2, params)</a></td>
+  <td class="summary_signature"><a href="#target_path/3">target_path(conn_or_endpoint, atom2, id)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
@@ -179,11 +223,7 @@
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#target_url/2">target_url(conn_or_endpoint, atom2)</a></td>
-  <td class="summary_synopsis"></td>
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#target_url/3">target_url(conn_or_endpoint, atom2, params)</a></td>
+  <td class="summary_signature"><a href="#target_url/3">target_url(conn_or_endpoint, atom2, id)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
@@ -290,6 +330,126 @@
   
 </section>
 <section class="detail">
+  <div class="detail_header" id="mission_path/3">
+    <span class="signature"><strong>mission_path(conn_or_endpoint, atom2, id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_path/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_path/4">
+    <span class="signature"><strong>mission_path(conn_or_endpoint, atom2, id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_path/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_target_path/3">
+    <span class="signature"><strong>mission_target_path(conn_or_endpoint, atom2, mission_id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_target_path/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_target_path/4">
+    <span class="signature"><strong>mission_target_path(conn_or_endpoint, atom2, mission_id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_target_path/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_target_url/3">
+    <span class="signature"><strong>mission_target_url(conn_or_endpoint, atom2, mission_id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_target_url/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_target_url/4">
+    <span class="signature"><strong>mission_target_url(conn_or_endpoint, atom2, mission_id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_target_url/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_url/3">
+    <span class="signature"><strong>mission_url(conn_or_endpoint, atom2, id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_url/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="mission_url/4">
+    <span class="signature"><strong>mission_url(conn_or_endpoint, atom2, id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mission_url/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
   <div class="detail_header" id="path/2">
     <span class="signature"><strong>path(conn, path)</strong></span>
     <div class="detail_header_links">
@@ -302,6 +462,66 @@
   <section class="docstring">
     <p>Generates the path information including any necessary prefix.</p>
 
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="project_mission_path/3">
+    <span class="signature"><strong>project_mission_path(conn_or_endpoint, atom2, project_id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#project_mission_path/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="project_mission_path/4">
+    <span class="signature"><strong>project_mission_path(conn_or_endpoint, atom2, project_id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#project_mission_path/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="project_mission_url/3">
+    <span class="signature"><strong>project_mission_url(conn_or_endpoint, atom2, project_id)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#project_mission_url/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="project_mission_url/4">
+    <span class="signature"><strong>project_mission_url(conn_or_endpoint, atom2, project_id, params)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#project_mission_url/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
   </section>
   
 </section>
@@ -430,23 +650,8 @@
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="target_path/2">
-    <span class="signature"><strong>target_path(conn_or_endpoint, atom2)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#target_path/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-  
-</section>
-<section class="detail">
   <div class="detail_header" id="target_path/3">
-    <span class="signature"><strong>target_path(conn_or_endpoint, atom2, params)</strong></span>
+    <span class="signature"><strong>target_path(conn_or_endpoint, atom2, id)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#target_path/3" class="detail_link" title="Link to this function">#</a>
@@ -475,23 +680,8 @@
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="target_url/2">
-    <span class="signature"><strong>target_url(conn_or_endpoint, atom2)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#target_url/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-  
-</section>
-<section class="detail">
   <div class="detail_header" id="target_url/3">
-    <span class="signature"><strong>target_url(conn_or_endpoint, atom2, params)</strong></span>
+    <span class="signature"><strong>target_url(conn_or_endpoint, atom2, id)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#target_url/3" class="detail_link" title="Link to this function">#</a>

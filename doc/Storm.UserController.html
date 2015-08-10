@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Winter.Web</title>
+    <title>Storm.UserController</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc">
@@ -27,7 +27,7 @@
 
   <h1 id="full_list_header">
     
-      winter v0.0.1
+      storm v0.0.1
     
   </h1>
 
@@ -78,11 +78,11 @@
         <button type="button" class="btn btn-default btn-sm" data-toggle="offcanvas">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
-        winter v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Winter.html#content">Winter</a> &rarr; <a href="Winter.Web.html#content">Web</a>
+        storm v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Storm.html#content">Storm</a> &rarr; <a href="Storm.UserController.html#content">UserController</a>
       </div>
 
       <h1>
-        Winter.Web
+        Storm.UserController
         
       </h1>
 
@@ -95,25 +95,9 @@
           <li><a href="#functions_details">Functions</a></li>
         
         
-          <li><a href="#macros_details">Macros</a></li>
-        
         
       </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>A module that keeps using definitions for controllers,
-views and so on.</p>
-<p>This can be used in your application as:</p>
-<pre><code class="elixir">use Winter.Web, :controller
-use Winter.Web, :view</code></pre>
-<p>The definitions below will be executed for every view,
-controller, etc, so keep them short and clean, focused
-on imports, uses and aliases.</p>
-<p>Do NOT define functions inside the quoted expressions
-below.</p>
-
-        </section>
       
 
       
@@ -123,28 +107,37 @@ below.</p>
           <h1>Summary</h1>
           <table class="summary">
             <tr>
-  <td class="summary_signature"><a href="#__using__/1">__using__(which)</a></td>
-  <td class="summary_synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
+  <td class="summary_signature"><a href="#action/2">action(conn, options)</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#call/2">call(conn, action)</a></td>
+  <td class="summary_synopsis"><p>Callback implementation for <code class="inline">c:Plug.call/2</code></p>
 </td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#channel/0">channel()</a></td>
+  <td class="summary_signature"><a href="#create/2">create(conn, arg2)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#controller/0">controller()</a></td>
+  <td class="summary_signature"><a href="#delete/2">delete(conn, arg2)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#model/0">model()</a></td>
+  <td class="summary_signature"><a href="#index/2">index(conn, params)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#router/0">router()</a></td>
+  <td class="summary_signature"><a href="#init/1">init(action)</a></td>
+  <td class="summary_synopsis"><p>Callback implementation for <code class="inline">c:Plug.init/1</code></p>
+</td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#show/2">show(conn, arg2)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#view/0">view()</a></td>
+  <td class="summary_signature"><a href="#update/2">update(conn, arg2)</a></td>
   <td class="summary_synopsis"></td>
 </tr>
 
@@ -158,11 +151,11 @@ below.</p>
         <section id="functions_details" class="details_list">
           <h1>Functions</h1>
           <section class="detail">
-  <div class="detail_header" id="channel/0">
-    <span class="signature"><strong>channel()</strong></span>
+  <div class="detail_header" id="action/2">
+    <span class="signature"><strong>action(conn, options)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#channel/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#action/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -173,11 +166,27 @@ below.</p>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="controller/0">
-    <span class="signature"><strong>controller()</strong></span>
+  <div class="detail_header" id="call/2">
+    <span class="signature"><strong>call(conn, action)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#controller/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#call/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Callback implementation for <code class="inline">c:Plug.call/2</code>.</p>
+
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="create/2">
+    <span class="signature"><strong>create(conn, arg2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#create/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -188,11 +197,11 @@ below.</p>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="model/0">
-    <span class="signature"><strong>model()</strong></span>
+  <div class="detail_header" id="delete/2">
+    <span class="signature"><strong>delete(conn, arg2)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#model/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#delete/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -203,11 +212,11 @@ below.</p>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="router/0">
-    <span class="signature"><strong>router()</strong></span>
+  <div class="detail_header" id="index/2">
+    <span class="signature"><strong>index(conn, params)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#router/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#index/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -218,11 +227,42 @@ below.</p>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="view/0">
-    <span class="signature"><strong>view()</strong></span>
+  <div class="detail_header" id="init/1">
+    <span class="signature"><strong>init(action)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#view/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#init/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Callback implementation for <code class="inline">c:Plug.init/1</code>.</p>
+
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="show/2">
+    <span class="signature"><strong>show(conn, arg2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#show/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="update/2">
+    <span class="signature"><strong>update(conn, arg2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#update/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -236,27 +276,6 @@ below.</p>
         </section>
       
 
-      
-        <section id="macros_details" class="details_list">
-          <h1>Macros</h1>
-          <section class="detail">
-  <div class="detail_header" id="__using__/1">
-    <span class="signature"><strong>__using__(which)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(macro)</span>
-      <a href="#__using__/1" class="detail_link" title="Link to this macro">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <section class="docstring">
-    <p>When used, dispatch to the appropriate controller/view/etc.</p>
-
-  </section>
-  
-</section>
-
-        </section>
       
 
       

@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :winter, Winter.Endpoint,
+config :storm, Storm.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "eNQk0Vm4AcF2IIW7AL5DVdmlyANo7/xYBVpvc5QcJA+bWxtprAklOYVaVOIaKC0W",
   render_errors: [default_format: "json"],
-  pubsub: [name: Winter.PubSub,
+  pubsub: [name: Storm.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -20,7 +20,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :joken,
-  config_module: Winter.Config.Joken
+  config_module: Storm.Config.Joken
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Winter.AuthTokenView</title>
+    <title>Storm.Web</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc">
@@ -27,7 +27,7 @@
 
   <h1 id="full_list_header">
     
-      winter v0.0.1
+      storm v0.0.1
     
   </h1>
 
@@ -78,11 +78,11 @@
         <button type="button" class="btn btn-default btn-sm" data-toggle="offcanvas">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
-        winter v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Winter.html#content">Winter</a> &rarr; <a href="Winter.AuthTokenView.html#content">AuthTokenView</a>
+        storm v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Storm.html#content">Storm</a> &rarr; <a href="Storm.Web.html#content">Web</a>
       </div>
 
       <h1>
-        Winter.AuthTokenView
+        Storm.Web
         
       </h1>
 
@@ -95,9 +95,25 @@
           <li><a href="#functions_details">Functions</a></li>
         
         
+          <li><a href="#macros_details">Macros</a></li>
+        
         
       </ul>
 
+      
+        <section id="moduledoc" class="docstring">
+          <p>A module that keeps using definitions for controllers,
+views and so on.</p>
+<p>This can be used in your application as:</p>
+<pre><code class="elixir">use Storm.Web, :controller
+use Storm.Web, :view</code></pre>
+<p>The definitions below will be executed for every view,
+controller, etc, so keep them short and clean, focused
+on imports, uses and aliases.</p>
+<p>Do NOT define functions inside the quoted expressions
+below.</p>
+
+        </section>
       
 
       
@@ -107,31 +123,29 @@
           <h1>Summary</h1>
           <table class="summary">
             <tr>
-  <td class="summary_signature"><a href="#__phoenix_recompile__?/0">__phoenix_recompile__?()</a></td>
-  <td class="summary_synopsis"><p>Returns true whenever the list of templates changes in the filesystem</p>
+  <td class="summary_signature"><a href="#__using__/1">__using__(which)</a></td>
+  <td class="summary_synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
 </td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#__resource__/0">__resource__()</a></td>
-  <td class="summary_synopsis"><p>The resource name, as an atom, for this view</p>
-</td>
+  <td class="summary_signature"><a href="#channel/0">channel()</a></td>
+  <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#__templates__/0">__templates__()</a></td>
-  <td class="summary_synopsis"><p>Returns the template root alongside all templates</p>
-</td>
+  <td class="summary_signature"><a href="#controller/0">controller()</a></td>
+  <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#render/2">render(template, assigns \\ %{})</a></td>
-  <td class="summary_synopsis"><p>Renders the given template locally</p>
-</td>
+  <td class="summary_signature"><a href="#model/0">model()</a></td>
+  <td class="summary_synopsis"></td>
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#template_not_found/2">template_not_found(template, assigns)</a></td>
-  <td class="summary_synopsis"><p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template</p>
-</td>
+  <td class="summary_signature"><a href="#router/0">router()</a></td>
+  <td class="summary_synopsis"></td>
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#view/0">view()</a></td>
+  <td class="summary_synopsis"></td>
 </tr>
 
           </table>
@@ -144,84 +158,77 @@ to render a particular template</p>
         <section id="functions_details" class="details_list">
           <h1>Functions</h1>
           <section class="detail">
-  <div class="detail_header" id="__phoenix_recompile__?/0">
-    <span class="signature"><strong>__phoenix_recompile__?()</strong></span>
+  <div class="detail_header" id="channel/0">
+    <span class="signature"><strong>channel()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#__phoenix_recompile__?/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#channel/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Returns true whenever the list of templates changes in the filesystem.</p>
-
+    
   </section>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="__resource__/0">
-    <span class="signature"><strong>__resource__()</strong></span>
+  <div class="detail_header" id="controller/0">
+    <span class="signature"><strong>controller()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#__resource__/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#controller/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>The resource name, as an atom, for this view</p>
-
+    
   </section>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="__templates__/0">
-    <span class="signature"><strong>__templates__()</strong></span>
+  <div class="detail_header" id="model/0">
+    <span class="signature"><strong>model()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#__templates__/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#model/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Returns the template root alongside all templates.</p>
-
+    
   </section>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="render/2">
-    <span class="signature"><strong>render(template, assigns \\ %{})</strong></span>
+  <div class="detail_header" id="router/0">
+    <span class="signature"><strong>router()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#render/2" class="detail_link" title="Link to this function">#</a>
+      <a href="#router/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Renders the given template locally.</p>
-
+    
   </section>
   
 </section>
 <section class="detail">
-  <div class="detail_header" id="template_not_found/2">
-    <span class="signature"><strong>template_not_found(template, assigns)</strong></span>
+  <div class="detail_header" id="view/0">
+    <span class="signature"><strong>view()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#template_not_found/2" class="detail_link" title="Link to this function">#</a>
+      <a href="#view/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
   <section class="docstring">
-    <p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p>
-
+    
   </section>
   
 </section>
@@ -229,6 +236,27 @@ to render a particular template.</p>
         </section>
       
 
+      
+        <section id="macros_details" class="details_list">
+          <h1>Macros</h1>
+          <section class="detail">
+  <div class="detail_header" id="__using__/1">
+    <span class="signature"><strong>__using__(which)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#__using__/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>When used, dispatch to the appropriate controller/view/etc.</p>
+
+  </section>
+  
+</section>
+
+        </section>
       
 
       
