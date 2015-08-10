@@ -4,10 +4,6 @@ defmodule Winter.UserControllerTest do
   alias Winter.User
   alias Winter.AuthToken
 
-  @valid_attrs %{email: "john@example.com", name: "john", password: "secret"}
-  @valid_fields Map.delete(@valid_attrs, :password)
-  @invalid_attrs %{}
-
   setup do
     conn = conn() |> put_req_header("accept", "application/json")
     {:ok, conn: conn}
@@ -19,7 +15,7 @@ defmodule Winter.UserControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    user = factory(:user) |> Repo.insert!
+    user = factory(%User{}, :insert)
     conn = get conn, user_path(conn, :show, user)
     assert json_response(conn, 200)["data"] == %{
       "id" => user.id,
@@ -35,46 +31,50 @@ defmodule Winter.UserControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(User, @valid_fields)
+    valid_attrs = attrs(%User{})
+    conn = post conn, user_path(conn, :create), user: valid_attrs
+    assert id = json_response(conn, 200)["data"]["id"]
+    assert Repo.get(User, id)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @invalid_attrs
+    conn = post conn, user_path(conn, :create), user: %{}
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "authenticate before user update", %{conn: conn} do
-    user = factory(:user) |> Repo.insert!
-    updated_fields = %{name: "John Better"}
+    user = factory(%User{}, :insert)
+    valid_attrs = %{name: "John Better"}
 
-    conn = put conn, user_path(conn, :update, user), user: updated_fields
+    conn = put conn, user_path(conn, :update, user), user: valid_attrs
     assert json_response(conn, 401)
-    refute Repo.get_by(User, updated_fields)
+    refute Repo.get_by(User, valid_attrs  )
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    user = factory(:user) |> Repo.insert!
+    user = factory(%User{}, :insert)
+    valid_attrs = %{name: "John Better", password: user.password}
+
     token = AuthToken.generate_token user
     conn = conn |> put_req_header("authorization", "Bearer " <> token.jwt)
 
-    conn = put conn, user_path(conn, :update, user), user: @valid_attrs
+    conn = put conn, user_path(conn, :update, user), user: valid_attrs
     assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(User, @valid_fields)
+    assert Repo.get_by(User, Map.delete(valid_attrs, :password))
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    user = factory(:user) |> Repo.insert!
+    user = factory(%User{}, :insert)
+
     token = AuthToken.generate_token user
     conn = conn |> put_req_header("authorization", "Bearer " <> token.jwt)
 
-    conn = put conn, user_path(conn, :update, user), user: @invalid_attrs
+    conn = put conn, user_path(conn, :update, user), user: %{name: nil}
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    user = factory(:user) |> Repo.insert!
+    user = factory(%User{}, :insert)
     conn = delete conn, user_path(conn, :delete, user)
 
     assert response(conn, 204)

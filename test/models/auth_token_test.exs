@@ -6,13 +6,13 @@ defmodule Winter.AuthTokenTest do
   alias Winter.User
 
   test "generate json web token" do
-    user = factory :user
+    user = factory %User{}, :insert
 
     assert %AuthToken{} = AuthToken.generate_token user
   end
 
   test "authenticate! plug validate auth token" do
-    user = factory(:user) |> Repo.insert!
+    user = factory %User{}, :insert
 
     token = AuthToken.generate_token user
     conn = conn() |> put_req_header("authorization", "Bearer " <> token.jwt)

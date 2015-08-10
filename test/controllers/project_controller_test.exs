@@ -2,27 +2,28 @@ defmodule Winter.ProjectControllerTest do
   use Winter.ConnCase
 
   alias Winter.Project
-  alias Winter.AuthToken
 
   @valid_attrs %{name: "some project"}
-  @invalid_attrs %{}
+  @invalid_attrs %{name: nil}
 
   setup do
-    user = factory(:user, :insert)
-    token = AuthToken.generate_token user
+    user = factory(%Winter.User{}, :insert)
+    token = Winter.AuthToken.generate_token(user)
+    project = factory(%Project{user_id: user.id}, :insert)
+
     conn = conn() 
     |> put_req_header("accept", "application/json")
     |> put_req_header("authorization", "Bearer " <> token.jwt)
-    {:ok, conn: conn, user: user}
+
+    {:ok, conn: conn, project: project}
   end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, project_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert [%{}] = json_response(conn, 200)["data"]
   end
 
-  test "shows chosen resource", %{conn: conn, user: user} do
-    project = factory(:project, user, :insert)
+  test "shows chosen resource", %{conn: conn, project: project} do
     conn = get conn, project_path(conn, :show, project)
     assert json_response(conn, 200)["data"] == %{
       "id" => project.id
@@ -46,21 +47,18 @@ defmodule Winter.ProjectControllerTest do
     assert json_response(conn, 422)["errors"] != %{}
   end
 
-  # test "updates and renders chosen resource when data is valid", %{conn: conn} do
-  #   project = factory(:project, :insert)
-  #   conn = put conn, project_path(conn, :update, project), project: @valid_attrs
-  #   assert json_response(conn, 200)["data"]["id"]
-  #   assert Repo.get_by(Project, @valid_attrs)
-  # end
+  test "updates and renders chosen resource when data is valid", %{conn: conn, project: project} do
+    conn = put conn, project_path(conn, :update, project), project: @valid_attrs
+    assert json_response(conn, 200)["data"]["id"]
+    assert Repo.get_by(Project, @valid_attrs)
+  end
 
-  # test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-  #   project = factory(:project, :insert)
-  #   conn = put conn, project_path(conn, :update, project), project: @invalid_attrs
-  #   assert json_response(conn, 422)["errors"] != %{}
-  # end
+  test "does not update chosen resource and renders errors when data is invalid", %{conn: conn, project: project} do
+    conn = put conn, project_path(conn, :update, project), project: @invalid_attrs
+    assert json_response(conn, 422)["errors"] != %{}
+  end
 
-  test "deletes chosen resource", %{conn: conn, user: user} do
-    project = factory(:project, user, :insert)
+  test "deletes chosen resource", %{conn: conn, project: project} do
     conn = delete conn, project_path(conn, :delete, project)
     assert response(conn, 204)
     refute Repo.get(Project, project.id)

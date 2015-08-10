@@ -3,44 +3,45 @@ defmodule Winter.UserTest do
 
   alias Winter.User
 
-  @valid_attrs %{email: "example@mail.com", name: "somename", password: "secret"}
-  @invalid_attrs %{}
-
   test "changeset with valid attributes" do
-    changeset = User.changeset(%User{}, @valid_attrs)
+    changeset = User.changeset(%User{}, attrs(%User{}))
     assert changeset.valid?
   end
 
   test "changeset with invalid attributes" do
-    changeset = User.changeset(%User{}, @invalid_attrs)
+    changeset = User.changeset(%User{}, %{})
     refute changeset.valid?
   end
 
   test "changeset generates a password digest" do
-    changeset = User.changeset(%User{}, @valid_attrs)
+    user_attrs = attrs(%User{})
+    changeset = User.changeset(%User{}, user_attrs)
+
     assert changeset.valid?
     assert Map.has_key?(changeset.changes, :password_digest)
 
-    digest = User.digest_password(@valid_attrs.password)
+    digest = User.digest_password(user_attrs.password)
     assert changeset.changes.password_digest == digest
   end
 
   test "verify password" do
-    user = factory(:user) |> Repo.insert!
+    user = factory(%User{}, :insert)
 
     refute User.verify_password(user, "invalid")
     assert User.verify_password(user, user.password)
   end
 
   test "validate password length" do
-    attrs = Map.merge @valid_attrs, %{password: String.duplicate("x", 5)}
-    changeset = User.changeset(%User{}, attrs)
+    too_short = String.duplicate("x", 5)
+    invalid_attrs = Map.merge attrs(%User{}), %{password: too_short}
+    changeset = User.changeset(%User{}, invalid_attrs)
+
     refute changeset.valid?
   end
 
   test "validate uniqueness of email" do
-    factory(:user) |> Repo.insert!
-    changeset = User.changeset(%User{}, attrs(:user))
+    user = factory(%User{}, :insert)
+    changeset = User.changeset(%User{}, Map.from_struct(user))
 
     refute changeset.valid?
     assert changeset.errors[:email]

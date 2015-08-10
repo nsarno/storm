@@ -4,7 +4,7 @@ defmodule Winter.ProjectTest do
   alias Winter.Project
 
   test "changeset with valid attributes" do
-    changeset = Project.changeset(%Project{}, attrs(:project))
+    changeset = Project.changeset(%Project{}, attrs(%Project{}))
     assert changeset.valid?
   end
 
