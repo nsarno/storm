@@ -9,6 +9,7 @@ defmodule Winter.User do
     field :email, :string
     field :password_digest, :string
     field :password, :string, virtual: true
+    has_many :projects, Winter.Project
 
     timestamps
   end

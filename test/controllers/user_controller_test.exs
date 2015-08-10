@@ -33,8 +33,8 @@ defmodule Winter.UserControllerTest do
   test "creates and renders resource when data is valid", %{conn: conn} do
     valid_attrs = attrs(%User{})
     conn = post conn, user_path(conn, :create), user: valid_attrs
-    assert id = json_response(conn, 200)["data"]["id"]
-    assert Repo.get(User, id)
+    assert json_response(conn, 200)["data"]["id"]
+    assert Repo.get_by(User, Map.delete(valid_attrs, :password))
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do

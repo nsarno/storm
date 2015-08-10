@@ -18,6 +18,10 @@ defmodule Winter.Factory do
     %{name: "blairwitch"}
   end
 
+  def attrs %Winter.Mission{} do
+    %{name: "impossible"}
+  end
+
   def attrs %Winter.Target{} do
     %{url: "https://github.com/", method: "GET"}
   end
