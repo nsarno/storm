@@ -16,19 +16,20 @@ defmodule Winter.Factory do
     }
   end
 
-  def factory :project, %User{id: user_id} do
-    %Project{
-      name: "blairwitch",
-      user_id: user_id,
-    }
-  end
-
   def factory :project do
     factory :project, factory(:user, :insert)
   end
 
   def factory :target do
     %Target{url: "https://github.com/", method: "GET"}
+  end
+
+
+  def factory :project, %User{id: user_id} do
+    %Project{
+      name: "blairwitch",
+      user_id: user_id,
+    }
   end
 
   def factory m, :insert do
