@@ -8,7 +8,7 @@ defmodule Winter.Project do
     timestamps
   end
 
-  @required_fields ~w(name user_id)
+  @required_fields ~w(name)
   @optional_fields ~w()
 
   @doc """
@@ -20,5 +20,10 @@ defmodule Winter.Project do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def changeset(model, %Winter.User{id: user_id}, params) do
+    changeset(model, params)
+    |> put_change(:user_id, user_id)
   end
 end

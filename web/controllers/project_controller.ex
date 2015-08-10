@@ -12,8 +12,7 @@ defmodule Winter.ProjectController do
   end
 
   def create(conn, %{"project" => project_params}) do
-    project_params = Map.merge(project_params, %{"user_id": conn.assigns[:user].id})
-    changeset = Project.changeset(%Project{}, project_params)
+    changeset = Project.changeset(%Project{}, conn.assigns[:user], project_params)
 
     case Repo.insert(changeset) do
       {:ok, project} ->
@@ -51,7 +50,7 @@ defmodule Winter.ProjectController do
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    project = Repo.delete!(project)
+    _project = Repo.delete!(project)
 
     send_resp(conn, :no_content, "")
   end

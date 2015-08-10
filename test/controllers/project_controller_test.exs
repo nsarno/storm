@@ -35,11 +35,11 @@ defmodule Winter.ProjectControllerTest do
     end
   end
 
-  # test "creates and renders resource when data is valid", %{conn: conn} do
-  #   conn = post conn, project_path(conn, :create), project: @valid_attrs
-  #   assert json_response(conn, 201)["data"]["id"]
-  #   assert Repo.get_by(Project, @valid_attrs)
-  # end
+  test "creates and renders resource when data is valid", %{conn: conn} do
+    conn = post conn, project_path(conn, :create), project: @valid_attrs
+    assert json_response(conn, 201)["data"]["id"]
+    assert Repo.get_by(Project, @valid_attrs)
+  end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, project_path(conn, :create), project: @invalid_attrs
