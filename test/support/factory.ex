@@ -15,11 +15,11 @@ defmodule Storm.Factory do
   end
 
   def attrs %Storm.Project{} do
-    %{name: "blairwitch"}
+    %{name: "project_name"}
   end
 
   def attrs %Storm.Mission{} do
-    %{name: "impossible"}
+    %{name: "mission_name"}
   end
 
   def attrs %Storm.Target{} do
@@ -27,7 +27,9 @@ defmodule Storm.Factory do
   end
 
   def factory model do
-    Map.merge model, attrs(model)
+    Map.merge attrs(model), model, fn _k, v1, v2 ->
+      if is_nil(v2), do: v1, else: v2
+    end
   end
 
   def factory model, :insert do

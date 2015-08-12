@@ -4,6 +4,7 @@ defmodule Storm.Mission do
   schema "missions" do
     field :name, :string
     belongs_to :project, Storm.Project
+    has_many :targets, Storm.Target
 
     timestamps
   end

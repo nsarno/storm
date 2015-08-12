@@ -18,7 +18,10 @@ defmodule Storm.Mixfile do
   def application do
     [
       mod: {Storm, []},
-      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :phoenix_ecto, :postgrex]
+      applications: [
+        :phoenix, :phoenix_html, :cowboy, :logger, :phoenix_ecto, :postgrex,
+        :httpoison
+      ]
     ]
   end
 
@@ -37,6 +40,7 @@ defmodule Storm.Mixfile do
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
      {:joken, "~> 0.15"},
+     {:httpoison, "~> 0.7"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.8", only: :dev}]
   end

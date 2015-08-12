@@ -16,6 +16,7 @@ sidebarNodes = {
 "docs": ["__sockets__/0","broadcast/3","broadcast!/3","broadcast_from/4","broadcast_from!/4","call/2","config/2","config_change/2","init/1","path/1","start_link/0","static_path/1","static_url/0","subscribe/3","unsubscribe/2","url/0"]
 },{"id": "Storm.ErrorView",
 "docs": ["__phoenix_recompile__?/0","__resource__/0","__templates__/0","render/2","template_not_found/2"]
+},{"id": "Storm.Minion"
 },{"id": "Storm.Mission",
 "docs": ["before_insert/1","before_update/1","changeset/2","changeset/3"]
 },{"id": "Storm.MissionController",
