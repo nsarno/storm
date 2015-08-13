@@ -1,6 +1,5 @@
-defmodule Storm.MinionTest do
+defmodule Storm.WorkerTest do
   use ExUnit.Case
-
   import Storm.Factory
 
   setup do
@@ -11,14 +10,13 @@ defmodule Storm.MinionTest do
   end
 
   test "run a mission without targets successfuly", %{mission: mission} do
-    assert Storm.Minion.run(mission) == []
+    assert Storm.Worker.run(mission) == []
   end
 
   ## Needs to be mocked
   ## HTTP requests = slow/unpredictable tests
-
   # test "run a mission with targets successfuly", %{mission: mission} do
   #   factory %Storm.Target{mission_id: mission.id}, :insert
-  #   assert Storm.Minion.run(mission) == [:ok]
+  #   assert Storm.Worker.run(mission) == [:ok]
   # end
 end

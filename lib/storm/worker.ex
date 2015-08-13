@@ -1,7 +1,8 @@
-defmodule Storm.Minion do
+defmodule Storm.Worker do
   @moduledoc """
   Process to execute a mission
   """
+
   alias Storm.Repo
   import Ecto.Model
 

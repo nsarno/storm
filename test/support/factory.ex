@@ -36,6 +36,13 @@ defmodule Storm.Factory do
     factory(model) |> Storm.Repo.insert!
   end
 
+  def clean_all do
+    Storm.Repo.delete_all(Storm.Target)
+    Storm.Repo.delete_all(Storm.Mission)
+    Storm.Repo.delete_all(Storm.Project)
+    Storm.Repo.delete_all(Storm.User)
+  end
+
   defp uniq do
     {me, s, mi} = :os.timestamp
     to_string(me + s + mi)
