@@ -3,10 +3,7 @@ defmodule Storm.SpawnerTest do
   import Storm.Factory
 
   setup do
-    user = factory %Storm.User{}, :insert
-    project = factory %Storm.Project{user_id: user.id}, :insert
-    on_exit fn -> clean_all end
-    {:ok, project: project}
+    {:ok, missions: [factory(%Storm.Mission{})]}
   end
 
   test "run with no missions" do
@@ -14,9 +11,8 @@ defmodule Storm.SpawnerTest do
     assert wc == 0
   end
 
-  test "run with a mission", %{project: project} do
-    mission = factory %Storm.Mission{project_id: project.id}, :insert
-    assert {:ok, workers_count: wc} = Storm.Spawner.run
+  test "run with a mission", %{missions: missions} do
+    assert {:ok, workers_count: wc} = Storm.Spawner.run missions
     assert wc == 1
   end
 end
