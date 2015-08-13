@@ -20,7 +20,7 @@ defmodule Storm.Mixfile do
       mod: {Storm, []},
       applications: [
         :phoenix, :phoenix_html, :cowboy, :logger, :phoenix_ecto, :postgrex,
-        :httpoison
+        :httpoison, :quantum
       ]
     ]
   end
@@ -41,6 +41,7 @@ defmodule Storm.Mixfile do
      {:cowboy, "~> 1.0"},
      {:joken, "~> 0.15"},
      {:httpoison, "~> 0.7"},
+     {:quantum, ">= 1.3.1"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.8", only: :dev}]
   end
