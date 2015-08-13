@@ -6,8 +6,21 @@ defmodule Storm.Worker do
   alias Storm.Repo
   import Ecto.Model
 
-  def run mission do
-    Enum.map Repo.all(assoc(mission, :targets)), fn t ->
+  def exec mission do
+    exec_fork Repo.all(assoc(mission, :targets)), mission.load
+  end
+
+  def exec_fork targets, 1 do
+    exec_once targets
+  end
+
+  def exec_fork targets, n do
+    spawn fn -> exec_fork(targets, n - 1) end
+    exec_once targets
+  end
+
+  defp exec_once targets do
+    Enum.map targets, fn t ->
       hit_target t
     end
   end

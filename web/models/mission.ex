@@ -3,6 +3,7 @@ defmodule Storm.Mission do
 
   schema "missions" do
     field :name, :string
+    field :load, :integer, default: 1
     belongs_to :project, Storm.Project
     has_many :targets, Storm.Target
 
@@ -10,7 +11,7 @@ defmodule Storm.Mission do
   end
 
   @required_fields ~w(name)
-  @optional_fields ~w()
+  @optional_fields ~w(load)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

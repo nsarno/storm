@@ -1,7 +1,7 @@
 defmodule Storm.Spawner do
 
   def run do
-    run Repo.all(Storm.Mission)
+    run Storm.Repo.all(Storm.Mission)
   end
 
   def run missions do
@@ -9,7 +9,7 @@ defmodule Storm.Spawner do
   end
 
   defp spawn_worker [mission | missions], wc do
-    spawn fn -> Storm.Worker.run(mission) end
+    spawn fn -> Storm.Worker.exec(mission) end
     spawn_worker missions, wc + 1
   end
 

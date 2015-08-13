@@ -19,7 +19,7 @@ defmodule Storm.Factory do
   end
 
   def attrs %Storm.Mission{} do
-    %{name: "mission_name"}
+    %{name: "mission_name", load: 1}
   end
 
   def attrs %Storm.Target{} do
