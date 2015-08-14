@@ -5,9 +5,11 @@ defmodule Storm.Endpoint do
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/", from: :storm, gzip: false,
-    only: ~w(css images js favicon.ico robots.txt)
+
+  # No static files - No need for this
+  # plug Plug.Static,
+  #   at: "/", from: :storm, gzip: false,
+  #   only: ~w(css images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -27,10 +29,11 @@ defmodule Storm.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
-  plug Plug.Session,
-    store: :cookie,
-    key: "_storm_key",
-    signing_salt: "1KI8UKYa"
+  # Not using sessions - No need for this
+  # plug Plug.Session,
+  #   store: :cookie,
+  #   key: "_storm_key",
+  #   signing_salt: "1KI8UKYa"
 
   plug Storm.Router
 end

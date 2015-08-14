@@ -12,56 +12,30 @@ defmodule Storm.Metrics.Hackney do
     ```
   """
 
-  def new(type, name) do
-    # IO.puts "NEW #{inspect name}"
+  alias Storm.Metrics.CompletionBucket
+
+  def new(_type, _name), do: :ok
+
+  def delete(_name), do: :ok
+
+  def increment_counter(_name), do: :ok
+
+  def increment_counter(_name, _value), do: :ok
+
+  def decrement_counter(_name), do: :ok
+
+  def decrement_counter(_name, _value), do: :ok
+
+  def update_histogram(_name, _fun) when is_function(_fun), do: :ok
+
+  def update_histogram([:hackney, _host, :response_time], value) do
+    CompletionBucket.pop(self).(value)
     :ok
   end
 
-  def delete(name) do
-    # IO.puts "DELETE #{inspect name}"
-    :ok
-  end
+  def update_histogram(_name, _value), do: :ok
 
-  def increment_counter(name) do
-    # IO.puts "INC #{inspect name}"
-    :ok
-  end
+  def update_gauge(_name, _value), do: :ok
 
-  def increment_counter(name, value) do
-    # IO.puts "INC #{inspect name} - #{inspect value}"
-    :ok
-  end
-
-  def decrement_counter(name) do
-    # IO.puts "DEC #{inspect name}"
-    :ok
-  end
-
-  def decrement_counter(name, value) do
-    # IO.puts "DEC #{inspect name} - #{inspect value}"
-    :ok
-  end
-
-  def update_histogram(name, fun) when is_function(fun) do
-    :ok
-  end
-
-  def update_histogram([:hackney, host, :response_time], value) do
-    IO.puts "(#{inspect(self)}) ---> response_time [#{inspect host}] => #{inspect value}"
-    :ok
-  end
-
-  def update_histogram(name, value) do
-    :ok
-  end
-
-  def update_gauge(name, value) do
-    # IO.puts "UPDATE GAUGE #{inspect name} - #{inspect value}"
-    :ok
-  end
-
-  def update_meter(name, value) do
-    # IO.puts "UPDATE METER #{inspect name} - #{inspect value}"
-    :ok
-  end
+  def update_meter(_name, _value), do: :ok
 end
