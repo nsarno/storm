@@ -30,3 +30,5 @@ config :quantum, cron: [
     # Every minute
     "* * * * *": fn -> Storm.Spawner.run end
 ]
+
+config :hackney, mod_metrics: Storm.Metrics.Hackney

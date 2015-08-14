@@ -5,15 +5,15 @@ defmodule Storm.Spawner do
   end
 
   def run missions do
-    spawn_worker missions, 0
+    spawn_worker missions
   end
 
-  defp spawn_worker [mission | missions], wc do
+  defp spawn_worker [mission | missions] do
     spawn fn -> Storm.Worker.exec(mission) end
-    spawn_worker missions, wc + 1
+    spawn_worker missions
   end
 
-  defp spawn_worker [], wc do
-    {:ok, workers_count: wc}
+  defp spawn_worker [] do
+    :ok
   end
 end

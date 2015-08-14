@@ -9,13 +9,13 @@ defmodule Storm.Config.Joken do
 
   def decode(binary), do: Poison.decode!(binary)
 
-  def claim(:exp, payload) do
+  def claim(:exp, _payload) do
     Joken.Helpers.get_current_time() + 300
   end
 
   def claim(_, _), do: nil
 
-  def validate_claim(:exp, payload, options) do
+  def validate_claim(:exp, payload, _options) do
     Joken.Helpers.validate_time_claim payload, "exp", "Token expired",
       fn(expires_at, now) ->
         expires_at > now

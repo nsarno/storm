@@ -13,6 +13,7 @@ defmodule Storm do
       worker(Storm.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Storm.Worker, [arg1, arg2, arg3]),
+      worker(Storm.Metrics.CompletionBucket, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

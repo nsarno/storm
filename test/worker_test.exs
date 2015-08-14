@@ -13,6 +13,7 @@ defmodule Storm.WorkerTest do
   #   project = factory %Storm.Project{user_id: user.id}, :insert
   #   mission = factory %Storm.Mission{project_id: project.id}, :insert
   #   factory %Storm.Target{mission_id: mission.id}, :insert
+
   #   assert Storm.Worker.exec(mission) == [:ok]
   # end
 end

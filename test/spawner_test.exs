@@ -7,12 +7,10 @@ defmodule Storm.SpawnerTest do
   end
 
   test "run with no missions" do
-    assert {:ok, workers_count: wc} = Storm.Spawner.run
-    assert wc == 0
+    assert :ok = Storm.Spawner.run
   end
 
   test "run with a mission", %{missions: missions} do
-    assert {:ok, workers_count: wc} = Storm.Spawner.run missions
-    assert wc == 1
+    assert :ok = Storm.Spawner.run missions
   end
 end
