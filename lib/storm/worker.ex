@@ -27,9 +27,7 @@ defmodule Storm.Worker do
   end
 
   defp hit_target %Storm.Target{url: url, method: "GET"} do
-    CompletionBucket.put(self, fn value ->
-      IO.puts "GET #{url} --> response time: [#{value}]"
-    end)
+    CompletionBucket.put self, &(IO.puts("GET #{url} --> response time: [#{&1}]"))
     log_response url, HTTPoison.get(url)
   end
 
