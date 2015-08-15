@@ -35,5 +35,7 @@ defmodule Storm.Endpoint do
   #   key: "_storm_key",
   #   signing_salt: "1KI8UKYa"
 
+  plug CORSPlug, [origin: "localhost:4200"]
+
   plug Storm.Router
 end

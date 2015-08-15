@@ -42,6 +42,7 @@ defmodule Storm.Mixfile do
      {:joken, "~> 0.15"},
      {:httpoison, "~> 0.7"},
      {:quantum, ">= 1.3.1"},
+     {:cors_plug, "~> 0.1.3"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.8", only: :dev}]
   end
