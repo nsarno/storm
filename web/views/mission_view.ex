@@ -2,11 +2,11 @@ defmodule Storm.MissionView do
   use Storm.Web, :view
 
   def render("index.json", %{missions: missions}) do
-    %{data: render_many(missions, Storm.MissionView, "mission.json")}
+    %{missions: render_many(missions, Storm.MissionView, "mission.json")}
   end
 
   def render("show.json", %{mission: mission}) do
-    %{data: render_one(mission, Storm.MissionView, "mission.json")}
+    %{mission: render_one(mission, Storm.MissionView, "mission.json")}
   end
 
   def render("mission.json", %{mission: mission}) do

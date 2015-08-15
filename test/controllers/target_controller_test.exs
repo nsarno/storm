@@ -21,12 +21,12 @@ defmodule Storm.TargetControllerTest do
 
   test "lists all entries on index", %{conn: conn, mission: m} do
     conn = get conn, mission_target_path(conn, :index, m)
-    assert [%{}] = json_response(conn, 200)["data"]
+    assert [%{}] = json_response(conn, 200)["targets"]
   end
 
   test "shows chosen resource", %{conn: conn, target: t} do
     conn = get conn, target_path(conn, :show, t)
-    assert json_response(conn, 200)["data"] == %{
+    assert json_response(conn, 200)["target"] == %{
       "id" => t.id,
       "method" => t.method,
       "url" => t.url
@@ -41,7 +41,7 @@ defmodule Storm.TargetControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn, mission: m} do
     conn = post conn, mission_target_path(conn, :create, m.id), target: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["target"]["id"]
     assert Repo.get_by(Target, @valid_attrs)
   end
 
@@ -52,7 +52,7 @@ defmodule Storm.TargetControllerTest do
 
   test "updates and renders chosen resource when data is valid", %{conn: conn, target: t} do
     conn = put conn, target_path(conn, :update, t), target: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["target"]["id"]
     assert Repo.get_by(Target, @valid_attrs)
   end
 

@@ -11,7 +11,7 @@ defmodule Storm.AuthTokenControllerTest do
     valid_attrs = %{email: user.email, password: user.password}
 
     conn = post conn, auth_token_path(conn, :create), auth_token: valid_attrs
-    assert json_response(conn, 200)["data"]["jwt"]
+    assert json_response(conn, 200)["auth_token"]["token"]
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do

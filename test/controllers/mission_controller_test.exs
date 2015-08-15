@@ -21,12 +21,12 @@ defmodule Storm.MissionControllerTest do
 
   test "lists all entries on index", %{conn: conn, project: p} do
     conn = get conn, project_mission_path(conn, :index, p.id)
-    assert [%{}] = json_response(conn, 200)["data"]
+    assert [%{}] = json_response(conn, 200)["missions"]
   end
 
   test "shows chosen resource", %{conn: conn, mission: m} do
     conn = get conn, mission_path(conn, :show, m)
-    assert json_response(conn, 200)["data"] == %{
+    assert json_response(conn, 200)["mission"] == %{
       "id" => m.id,
       "name" => m.name
     }
@@ -40,7 +40,7 @@ defmodule Storm.MissionControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn, project: p} do
     conn = post conn, project_mission_path(conn, :create, p.id), mission: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["mission"]["id"]
     assert Repo.get_by(Mission, @valid_attrs)
   end
 
@@ -51,7 +51,7 @@ defmodule Storm.MissionControllerTest do
 
   test "updates and renders chosen resource when data is valid", %{conn: conn, mission: m} do
     conn = put conn, mission_path(conn, :update, m), mission: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["mission"]["id"]
     assert Repo.get_by(Mission, @valid_attrs)
   end
 

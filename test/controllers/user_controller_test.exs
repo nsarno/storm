@@ -11,13 +11,13 @@ defmodule Storm.UserControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, user_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert json_response(conn, 200)["users"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
     user = factory(%User{}, :insert)
     conn = get conn, user_path(conn, :show, user)
-    assert json_response(conn, 200)["data"] == %{
+    assert json_response(conn, 200)["user"] == %{
       "id" => user.id,
       "name" => user.name,
       "email" => user.email
@@ -33,7 +33,7 @@ defmodule Storm.UserControllerTest do
   test "creates and renders resource when data is valid", %{conn: conn} do
     valid_attrs = attrs(%User{})
     conn = post conn, user_path(conn, :create), user: valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["user"]["id"]
     assert Repo.get_by(User, Map.delete(valid_attrs, :password))
   end
 
@@ -59,7 +59,7 @@ defmodule Storm.UserControllerTest do
     conn = conn |> put_req_header("authorization", "Bearer " <> token.jwt)
 
     conn = put conn, user_path(conn, :update, user), user: valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["user"]["id"]
     assert Repo.get_by(User, Map.delete(valid_attrs, :password))
   end
 

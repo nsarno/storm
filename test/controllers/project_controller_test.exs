@@ -20,12 +20,12 @@ defmodule Storm.ProjectControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, project_path(conn, :index)
-    assert [%{}] = json_response(conn, 200)["data"]
+    assert [%{}] = json_response(conn, 200)["projects"]
   end
 
   test "shows chosen resource", %{conn: conn, project: project} do
     conn = get conn, project_path(conn, :show, project)
-    assert json_response(conn, 200)["data"] == %{
+    assert json_response(conn, 200)["project"] == %{
       "id" => project.id
     }
   end
@@ -38,7 +38,7 @@ defmodule Storm.ProjectControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, project_path(conn, :create), project: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["project"]["id"]
     assert Repo.get_by(Project, @valid_attrs)
   end
 
@@ -49,7 +49,7 @@ defmodule Storm.ProjectControllerTest do
 
   test "updates and renders chosen resource when data is valid", %{conn: conn, project: project} do
     conn = put conn, project_path(conn, :update, project), project: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["project"]["id"]
     assert Repo.get_by(Project, @valid_attrs)
   end
 
