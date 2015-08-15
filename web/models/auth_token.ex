@@ -16,7 +16,7 @@ defmodule Storm.AuthToken do
       {:ok, payload} ->
         conn
         |> assign(:user, Repo.get!(User, payload["sub"]))
-      {:error, message} ->
+      {:error, _message} ->
         conn
         |> put_status(:unauthorized)
         |> render(Storm.ErrorView, "401.json")
@@ -33,7 +33,7 @@ defmodule Storm.AuthToken do
     {:ok, _payload} = Joken.decode jwt
   end
 
-  def decode_token token do
+  def decode_token _token do
     {:error, :invalid_token}
   end
 

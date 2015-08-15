@@ -51,7 +51,7 @@ defmodule Storm.MissionController do
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    mission = Repo.delete!(mission)
+    _mission = Repo.delete!(mission)
 
     send_resp(conn, :no_content, "")
   end

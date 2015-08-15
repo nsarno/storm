@@ -1,6 +1,5 @@
 defmodule Storm.User do
   use Storm.Web, :model
-  import Ecto.Query
   alias Storm.User
   alias Storm.Repo
 

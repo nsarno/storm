@@ -3,15 +3,11 @@ defmodule Storm.Factory do
     Provides helper functions to easily run test against persisted data.
   """
 
-  alias Storm.User
-  alias Storm.Project
-  alias Storm.Target
-
   def attrs %Storm.User{} do
     %{email: uniq <> "@example.com",
       name: "john",
       password: "secret",
-      password_digest: User.digest_password "secret"}
+      password_digest: Storm.User.digest_password "secret"}
   end
 
   def attrs %Storm.Project{} do
