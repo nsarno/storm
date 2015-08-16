@@ -11,6 +11,7 @@ defmodule Storm.Router do
  
     resources "/users", UserController, except: [:new, :edit]
     resources "/auth_token", AuthTokenController, only: [:create]
+    resources "current_user", CurrentUserController, only: [:index]
  
     resources "/projects", ProjectController, except: [:new, :edit] do
       resources "/missions", MissionController, only: [:index, :create]
