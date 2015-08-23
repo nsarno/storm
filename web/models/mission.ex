@@ -5,7 +5,7 @@ defmodule Storm.Mission do
     field :name, :string
     field :load, :integer, default: 1
     belongs_to :project, Storm.Project
-    has_many :targets, Storm.Target
+    has_many :targets, Storm.Target, on_delete: :fetch_and_delete
 
     timestamps
   end

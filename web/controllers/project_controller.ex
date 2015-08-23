@@ -7,8 +7,8 @@ defmodule Storm.ProjectController do
   plug :authenticate!
 
   def index(conn, _params) do
-    projects = Repo.all(Project)
-    render(conn, "index.json", projects: projects)
+    projects_with_missions = Repo.preload(Repo.all(Project), :missions)
+    render(conn, "index.json", projects: projects_with_missions)
   end
 
   def create(conn, %{"project" => project_params}) do
@@ -27,8 +27,8 @@ defmodule Storm.ProjectController do
   end
 
   def show(conn, %{"id" => id}) do
-    project = Repo.get!(Project, id)
-    render conn, "show.json", project: project
+    project_with_missions = Repo.preload(Repo.get!(Project, id), :missions)
+    render conn, "show.json", project: project_with_missions
   end
 
   def update(conn, %{"id" => id, "project" => project_params}) do

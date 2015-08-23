@@ -8,7 +8,7 @@ defmodule Storm.User do
     field :email, :string
     field :password_digest, :string
     field :password, :string, virtual: true
-    has_many :projects, Storm.Project
+    has_many :projects, Storm.Project, on_delete: :fetch_and_delete
     has_many :projects_missions, through: [:projects, :missions]
 
     timestamps

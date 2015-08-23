@@ -4,7 +4,7 @@ defmodule Storm.Project do
   schema "projects" do
     field :name, :string
     belongs_to :user, Storm.User
-    has_many :missions, Storm.Mission
+    has_many :missions, Storm.Mission, on_delete: :fetch_and_delete
 
     timestamps
   end

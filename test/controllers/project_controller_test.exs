@@ -10,6 +10,7 @@ defmodule Storm.ProjectControllerTest do
     user = factory(%Storm.User{}, :insert)
     token = Storm.AuthToken.generate_token(user)
     project = factory(%Project{user_id: user.id}, :insert)
+    mission = factory(%Storm.Mission{project_id: project.id}, :insert)
 
     conn = conn() 
     |> put_req_header("accept", "application/json")
@@ -26,7 +27,8 @@ defmodule Storm.ProjectControllerTest do
   test "shows chosen resource", %{conn: conn, project: project} do
     conn = get conn, project_path(conn, :show, project)
     assert json_response(conn, 200)["project"] == %{
-      "id" => project.id
+      "id" => project.id,
+      "name" => project.name
     }
   end
 
