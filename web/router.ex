@@ -8,7 +8,6 @@ defmodule Storm.Router do
   scope "/", Storm do
     pipe_through :api
 
- 
     resources "/users", UserController, except: [:new, :edit]
     resources "/auth_token", AuthTokenController, only: [:create]
     resources "current_user", CurrentUserController, only: [:index]
