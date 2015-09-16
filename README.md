@@ -3,7 +3,7 @@
 
 Storm is a test project through which I intend to learn about [Elixir](http://elixir-lang.org/) & [Phoenix](http://www.phoenixframework.org/).
 
-## Description
+### Description
 
 Storm is a REST API to setup & execute HTTP load simulation.
 
@@ -31,7 +31,7 @@ server: Cowboy
 ...
 ```
 
-## Run the tests
+### Run the tests
 
 ```bash
 $ mix test
