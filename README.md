@@ -116,40 +116,42 @@ At the moment, the callback provided only outputs the result.
 
 ## How metrics are stored (Not implemented yet)
 
-### Requirements
+Probably going to use statsD with [Whisper](https://github.com/graphite-project/whisper).
 
-1. It must be possible to add more metrics of different types (int, float, string, ...)
-2. It must be possible to add more metrics related to different items (targets, missions, projects, ...)
-3. Data size must be limited. (Generating multiple metrics per targets per minutes can quickly go out of control)
+<!--### Requirements-->
 
-### Solutions
+<!--1. It must be possible to add more metrics of different types (int, float, string, ...)-->
+<!--2. It must be possible to add more metrics related to different items (targets, missions, projects, ...)-->
+<!--3. Data size must be limited. (Generating multiple metrics per targets per minutes can quickly go out of control)-->
 
-Every metric stored corresponds to a metric item.
-Every time an object is created, it can generate a set of items that will be used to collect metrics.
+<!--### Solutions-->
 
-Example:
-> A `target` creation generates a `response_time` item.
-> 
-> When a `worker` hit a `target`, it stores the response time value and a timestamp for the `response_time` item of the target.
+<!--Every metric stored corresponds to a metric item.-->
+<!--Every time an object is created, it can generate a set of items that will be used to collect metrics.-->
 
-1. One history table per type.
-2. Polymorphic association to identify the source of an item.
-3. Implement a round-robin like insert function with a fixed set size of allowed data per project.
+<!--Example:-->
+<!--> A `target` creation generates a `response_time` item.-->
+<!--> -->
+<!--> When a `worker` hit a `target`, it stores the response time value and a timestamp for the `response_time` item of the target.-->
 
-**Example response time**
+<!--1. One history table per type.-->
+<!--2. Polymorphic association to identify the source of an item.-->
+<!--3. Implement a round-robin like insert function with a fixed set size of allowed data per project.-->
 
-- table: **items**
-- columns: id, item_type:string, source_id:integer, source_type:string
+<!--**Example response time**-->
 
-e.g.
-> id(1), item_type("response_time"), source_id(target.id), source_type("Target")
+<!--- table: **items**-->
+<!--- columns: id, item_type:string, source_id:integer, source_type:string-->
 
-- table: **history_float**
-- columns: item_id:integer, item_type:integer, value:float, clock:timestamp
-- indexes: index(item_id), unique(item_id, clock)
+<!--e.g.-->
+<!--> id(1), item_type("response_time"), source_id(target.id), source_type("Target")-->
 
-e.g.
-> item_id(1), item_type(1), value(1234.56), clock(1442470861)
+<!--- table: **history_float**-->
+<!--- columns: item_id:integer, item_type:integer, value:float, clock:timestamp-->
+<!--- indexes: index(item_id), unique(item_id, clock)-->
 
-Notes:
-A primary key (id column) is not required as it would most likely never be used. Also on a potentially big table like history, this could result in a huge waste of space.
+<!--e.g.-->
+<!--> item_id(1), item_type(1), value(1234.56), clock(1442470861)-->
+
+<!--Notes:-->
+<!--A primary key (id column) is not required as it would most likely never be used. Also on a potentially big table like history, this could result in a huge waste of space.-->
