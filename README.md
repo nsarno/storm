@@ -7,6 +7,10 @@ Storm is a test project through which I intend to learn about [Elixir](http://el
 
 Storm is a REST API to setup & execute HTTP load simulation.
 
+Example use cases:
+- Simulating user traffic on a staging application.
+- Load testing
+
 **Example use cases**
 
 - Simulate heavy traffic to test your application stability
@@ -112,8 +116,3 @@ At the moment, the callback provided only outputs the result.
 - `lib/storm/metrics/hackney.ex`
 - `lib/storm/metrics/completion_bucket.ex`
 - `lib/storm/worker.ex` in the `hit_target/2` function
-
-
-## How metrics are stored (Not implemented yet)
-
-Probably going to use statsD with [Whisper](https://github.com/graphite-project/whisper).
