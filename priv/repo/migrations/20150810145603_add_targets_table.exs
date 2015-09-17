@@ -1,4 +1,4 @@
-defmodule Storm.Repo.Migrations.CreateTarget do
+defmodule Storm.Repo.Migrations.AddTargetsTable do
   use Ecto.Migration
 
   def change do

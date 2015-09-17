@@ -1,4 +1,4 @@
-defmodule Storm.Repo.Migrations.CreateMission do
+defmodule Storm.Repo.Migrations.AddMissionsTable do
   use Ecto.Migration
 
   def change do
