@@ -120,8 +120,7 @@ At the moment, the callback provided only outputs the result.
 
 1. It must be possible to add more metrics of different types (int, float, string, ...)
 2. It must be possible to add more metrics related to different items (targets, missions, projects, ...)
-3. Data size must be limited. (Generation of multiple metrics / targets / minutes could quickly go out of hand)
-4. There can be only one 
+3. Data size must be limited. (Generating multiple metrics per targets per minutes can quickly go out of control)
 
 ### Solutions
 
@@ -139,15 +138,15 @@ Example:
 
 **Example response time**
 
-table: items
-columns: id, item_type:string, source_id:integer, source_type:string
+- table: **items**
+- columns: id, item_type:string, source_id:integer, source_type:string
 
 e.g.
 > id(1), item_type("response_time"), source_id(target.id), source_type("Target")
 
-table: history_float
-columns: item_id:integer, item_type:integer, value:float, clock:timestamp
-indexes: index(item_id), unique(item_id, clock)
+- table: **history_float**
+- columns: item_id:integer, item_type:integer, value:float, clock:timestamp
+- indexes: index(item_id), unique(item_id, clock)
 
 e.g.
 > item_id(1), item_type(1), value(1234.56), clock(1442470861)
