@@ -116,15 +116,6 @@ At the moment, the callback provided only outputs the result.
 
 ## How metrics are stored (Not implemented yet)
 
-Every metric stored corresponds to a metric item.
-Every time an object is created, it can generate a set of items that will be used to collect metrics.
-
-Example:
-
-A `target` is created, it generates a response time" item.
-
-When a `worker` hit a `target`, it's going to store the response time value and a timestamp for the "response time" item of this target.
-
 ### Requirements
 
 1. It must be possible to add more metrics of different types (int, float, string, ...)
@@ -134,22 +125,32 @@ When a `worker` hit a `target`, it's going to store the response time value and 
 
 ### Solutions
 
+Every metric stored corresponds to a metric item.
+Every time an object is created, it can generate a set of items that will be used to collect metrics.
+
+Example:
+> A `target` creation generates a `response_time` item.
+> 
+> When a `worker` hit a `target`, it stores the response time value and a timestamp for the `response_time` item of the target.
+
 1. One history table per type.
 2. Polymorphic association to identify the source of an item.
 3. Implement a round-robin like insert function with a fixed set size of allowed data per project.
 
-**Example implementation for response time**
+**Example response time**
 
 table: items
 columns: id, item_type:string, source_id:integer, source_type:string
 
-eg: id(1), item_type("response_time"), source_id(target.id), source_type("Target")
+e.g.
+> id(1), item_type("response_time"), source_id(target.id), source_type("Target")
 
 table: history_float
 columns: item_id:integer, item_type:integer, value:float, clock:timestamp
 indexes: index(item_id), unique(item_id, clock)
 
-eg: item_id(1), item_type(1), value(1234.56), clock(1442470861)
+e.g.
+> item_id(1), item_type(1), value(1234.56), clock(1442470861)
 
 Notes:
 A primary key (id column) is not required as it would most likely never be used. Also on a potentially big table like history, this could result in a huge waste of space.
