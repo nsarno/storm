@@ -42,6 +42,7 @@ defmodule Storm.UserTest do
   test "validate uniqueness of email" do
     user = factory(%User{}, :insert)
     changeset = User.changeset(%User{}, Map.from_struct(user))
+    {errors, changeset} = Repo.insert(changeset)
 
     refute changeset.valid?
     assert changeset.errors[:email]

@@ -35,7 +35,7 @@ defmodule Storm.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> validate_unique(:email, on: Repo)
+    |> unique_constraint(:email)
     |> validate_length(:password, min: 6)
     |> validate_password
   end
