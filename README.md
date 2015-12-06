@@ -7,10 +7,10 @@ Storm is a test project through which I intend to learn about [Elixir](http://el
 
 Storm is a REST API to setup & execute HTTP load simulation.
 
-**Example use cases**
+**Example use cases:**
 
-- Simulate heavy traffic to test your application stability
-- Simulate user scenarios and gather metrics to monitor improvements/degradation of your application performance over time.
+- Simulating user traffic on a staging application.
+- Load testing
 
 ## Getting started
 
